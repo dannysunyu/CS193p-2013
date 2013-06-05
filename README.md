@@ -1,1 +1,1 @@
-This repo records my self-study of Stanford course on iTunes U.
+This repo records my self-study of Stanford CS193p - Coding together for iOS 6 on iTunes U.
