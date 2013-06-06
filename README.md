@@ -1,1 +1,1 @@
-This repo records my self-study of Stanford CS193p - Coding together for iOS 6 on iTunes U.
+This repo records my self-study work of Stanford CS193p - Coding Together: Developing Apps for iPhone and iPad (Winter 2013) on iTunes U.
