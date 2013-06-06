@@ -15,10 +15,13 @@
     
     if ([otherCards count] == 1) {
         PlayingCard *otherCard = [otherCards lastObject];
-        if ([otherCard.suit isEqualToString:self.suit]) {
-            score = 1;
-        } else if (otherCard.rank == self.rank) {
-            score = 4;
+        if ([otherCard isKindOfClass:[PlayingCard class]]) {
+            PlayingCard *otherPlayingCard = (PlayingCard *)otherCard;
+            if ([otherPlayingCard.suit isEqualToString:self.suit]) {
+                score = 1;
+            } else if (otherPlayingCard.rank == self.rank) {
+                score = 4;
+            }
         }
     }
     
