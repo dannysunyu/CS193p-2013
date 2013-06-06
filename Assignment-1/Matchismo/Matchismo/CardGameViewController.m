@@ -20,6 +20,10 @@
 
 @implementation CardGameViewController
 
+- (CardMatchingGame *)game {
+    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count] usingDeck:[[PlayingCardDeck alloc] init]];
+    return _game;
+}
 
 - (void)setFlipCount:(int)flipCount {
     _flipCount = flipCount;
@@ -49,11 +53,5 @@
     self.flipCount++;
     [self updateUI];
 }
-
-- (CardMatchingGame *)game {
-    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count] usingDeck:[[PlayingCardDeck alloc] init]];
-    return _game;
-}
-
 
 @end
