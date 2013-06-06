@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @end
 
 @implementation CardGameViewController
@@ -43,14 +44,29 @@
         cardButton.selected = card.isFaceUp;
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;
+        
+        UIImage *cardBackImage = [UIImage imageNamed:@"cardback.png"];
+        [cardButton setImage:cardBackImage forState:UIControlStateNormal];
+        
+        UIImage *cardFrontImage = [[UIImage alloc] init];
+        [cardButton setImage:cardFrontImage forState:UIControlStateSelected];
+        [cardButton setImage:cardFrontImage forState:UIControlStateSelected|UIControlStateDisabled];
+        
+        cardButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 2.0, 2.0, 2.0);
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    self.messageLabel.text = self.game.lastFlipResult;
 }
-
 
 - (IBAction)flipCard:(UIButton *)sender {
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     self.flipCount++;
+    [self updateUI];
+}
+
+- (IBAction)deal {
+    self.game = nil;
+    self.flipCount = 0;
     [self updateUI];
 }
 
