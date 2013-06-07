@@ -58,6 +58,12 @@
     self.messageLabel.text = self.game.lastFlipResult;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self updateUI];
+}
+
 - (IBAction)flipCard:(UIButton *)sender {
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     self.flipCount++;
