@@ -17,12 +17,14 @@
 
 @implementation CardGameViewController
 
-- (void)setFlipCount:(int)flipCount {
+- (void)setFlipCount:(int)flipCount
+{
     _flipCount = flipCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
 }
 
-- (IBAction)flipCard:(UIButton *)sender {
+- (IBAction)flipCard:(UIButton *)sender
+{
     sender.selected = !sender.isSelected;
     if (sender.isSelected) {
         Card *card = [self.deck drawRandomCard];
@@ -31,7 +33,8 @@
     self.flipCount++;
 }
 
-- (Deck *)deck {
+- (Deck *)deck
+{
     if (!_deck) _deck = [[PlayingCardDeck alloc] init];
     return _deck;
 }
