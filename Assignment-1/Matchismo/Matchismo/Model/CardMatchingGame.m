@@ -20,12 +20,14 @@
 #define MISMATCH_PENALTY 2
 #define MATCH_BONUS 4
 
-- (NSMutableArray *)cards {
+- (NSMutableArray *)cards
+{
     if (!_cards) _cards = [[NSMutableArray alloc] init];
     return _cards;
 }
 
-- (id)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck {
+- (id)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck
+{
     self = [super init];
     
     if (self) {
@@ -42,11 +44,13 @@
     return self;
 }
 
-- (Card *)cardAtIndex:(NSUInteger)index {
+- (Card *)cardAtIndex:(NSUInteger)index
+{
     return (index < [self.cards count]) ? self.cards[index] : nil;
 }
 
-- (void)flipCardAtIndex:(NSUInteger)index {
+- (void)flipCardAtIndex:(NSUInteger)index
+{
     Card *card = [self cardAtIndex:index];
     
     if (!card.isUnplayable) {
