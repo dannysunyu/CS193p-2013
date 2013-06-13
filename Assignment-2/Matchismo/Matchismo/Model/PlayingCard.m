@@ -67,4 +67,9 @@
     return [self rankStrings].count - 1;
 }
 
+- (NSString *)description
+{
+    return [self contents];
+}
+
 @end

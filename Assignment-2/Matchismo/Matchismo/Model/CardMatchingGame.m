@@ -16,9 +16,27 @@
 
 @implementation CardMatchingGame
 
-#define FLIP_COST 1
-#define MISMATCH_PENALTY 2
-#define MATCH_BONUS 4
+#define DEFAULT_FLIP_COST 1
+#define DEFAULT_MISMATCH_PENALTY 2
+#define DEFAULT_MATCH_BONUS 4
+
+- (int)matchBonus
+{
+    if (!_matchBonus) _matchBonus = DEFAULT_MATCH_BONUS;
+    return _matchBonus;
+}
+
+- (int)flipCost
+{
+    if (!_flipCost) _flipCost = DEFAULT_FLIP_COST;
+    return _flipCost;
+}
+
+- (int)mismatchPenalty
+{
+    if (!_mismatchPenalty) _mismatchPenalty = DEFAULT_MISMATCH_PENALTY;
+    return _mismatchPenalty;
+}
 
 - (NSMutableArray *)cards
 {
@@ -56,32 +74,48 @@
     if (!card.isUnplayable) {
         if (!card.isFaceUp) {
             self.lastFlipResult = [NSString stringWithFormat:@"Flipped up %@", card.contents];
-            
-            // see if flipping this card up creates a match
-            for (Card *otherCard in self.cards) {
-                if (otherCard.isFaceUp && !otherCard.isUnplayable) {
-                    int matchScore = [card match:@[otherCard]];
-                    if (matchScore) {
-                        otherCard.unplayable = YES;
-                        card.unplayable = YES;
-                        self.score += matchScore * MATCH_BONUS;
-                        
-                        self.lastFlipResult = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, self.score];
-                    } else {
-                        otherCard.faceUp = NO;
-                        self.score -= MISMATCH_PENALTY;
-                        
-                        self.lastFlipResult = [NSString stringWithFormat:@"%@ and %@ don't match! %d points penalty!", card.contents, otherCard.contents, self.score];
+            NSArray *pendingCards = [self otherCardsPendingForMatch];
+            if ([pendingCards count] == self.numberOfCardsToMatch - 1) {
+                int matchScore = [card match:pendingCards];
+                if (matchScore) {
+                    for (id otherCard in pendingCards) {
+                        Card *pendingCard = (Card *)otherCard;
+                        pendingCard.unplayable = YES;
                     }
+                    card.unplayable = YES;
+                    
+                    self.lastFlipResult = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, [pendingCards componentsJoinedByString:@" & "], (matchScore * self.matchBonus)];
+                    
+                    self.score += matchScore * self.matchBonus;
+                } else {
+                    for (id otherCard in pendingCards) {
+                        Card *pendingCard = (Card *)otherCard;
+                        pendingCard.faceUp = NO;
+                    }
+                    
+                    self.lastFlipResult = [NSString stringWithFormat:@"%@ and %@ don't match! %d points penalty!", card.contents, [pendingCards componentsJoinedByString:@" & "], self.mismatchPenalty];
+                    self.score -= self.mismatchPenalty;
                 }
             }
-            self.score -= FLIP_COST;
-        } else {
-            self.lastFlipResult = [NSString stringWithFormat:@"Flipped down %@", card.contents];
+            
+            self.score -= self.flipCost;
         }
         card.faceUp = !card.isFaceUp;
     }
-    
 }
+
+- (NSArray *)otherCardsPendingForMatch
+{
+    NSMutableArray *pendingCards = [[NSMutableArray alloc] init];
+    
+    for (Card *otherCard in self.cards) {
+        if (otherCard.isFaceUp && !otherCard.isUnplayable) {
+            [pendingCards addObject:otherCard];
+        }
+    }
+    
+    return pendingCards;
+}
+
 
 @end

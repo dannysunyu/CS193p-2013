@@ -21,9 +21,19 @@
 
 @implementation CardGameViewController
 
+#define PLAYING_CARD_GAME_FLIP_COST 1
+#define PLAYING_CARD_GAME_MATCH_BONUS 4
+#define PLAYING_CARD_GAME_MISMATCH_PENALTY 2
+
 - (CardMatchingGame *)game
 {
-    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count] usingDeck:[[PlayingCardDeck alloc] init]];
+    if (!_game) {
+        _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count] usingDeck:[[PlayingCardDeck alloc] init]];
+        _game.flipCost = PLAYING_CARD_GAME_FLIP_COST;
+        _game.matchBonus = PLAYING_CARD_GAME_MATCH_BONUS;
+        _game.mismatchPenalty = PLAYING_CARD_GAME_MISMATCH_PENALTY;
+        _game.numberOfCardsToMatch = 2;
+    }
     return _game;
 }
 

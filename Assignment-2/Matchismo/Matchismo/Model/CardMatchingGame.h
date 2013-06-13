@@ -18,6 +18,10 @@
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 @property (nonatomic, readonly) int score;
+@property (nonatomic) NSUInteger numberOfCardsToMatch;
+@property (nonatomic) int flipCost;
+@property (nonatomic) int matchBonus;
+@property (nonatomic) int mismatchPenalty;
 @property (strong, nonatomic, readonly) NSString *lastFlipResult;
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		303F724C1764B9CE004248F2 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 303F724B1764B9CE004248F2 /* SetCard.m */; };
+		303F724F1764B9F5004248F2 /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 303F724E1764B9F5004248F2 /* SetCardDeck.m */; };
 		30513660176081AC00E68934 /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = 3051365F176081AC00E68934 /* cardback.png */; };
 		305A6A16175F069600BCE230 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 305A6A15175F069600BCE230 /* Card.m */; };
 		305A6A1A175F06E700BCE230 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 305A6A19175F06E700BCE230 /* Deck.m */; };
@@ -28,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		303F724A1764B9CE004248F2 /* SetCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCard.h; path = Model/SetCard.h; sourceTree = "<group>"; };
+		303F724B1764B9CE004248F2 /* SetCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCard.m; path = Model/SetCard.m; sourceTree = "<group>"; };
+		303F724D1764B9F5004248F2 /* SetCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCardDeck.h; path = Model/SetCardDeck.h; sourceTree = "<group>"; };
+		303F724E1764B9F5004248F2 /* SetCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCardDeck.m; path = Model/SetCardDeck.m; sourceTree = "<group>"; };
 		3051365F176081AC00E68934 /* cardback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardback.png; sourceTree = "<group>"; };
 		305A6A14175F069500BCE230 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Model/Card.h; sourceTree = "<group>"; };
 		305A6A15175F069600BCE230 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Model/Card.m; sourceTree = "<group>"; };
@@ -86,6 +92,10 @@
 				305A6A19175F06E700BCE230 /* Deck.m */,
 				305A6A1E175F121F00BCE230 /* PlayingCardDeck.h */,
 				305A6A1F175F121F00BCE230 /* PlayingCardDeck.m */,
+				303F724A1764B9CE004248F2 /* SetCard.h */,
+				303F724B1764B9CE004248F2 /* SetCard.m */,
+				303F724D1764B9F5004248F2 /* SetCardDeck.h */,
+				303F724E1764B9F5004248F2 /* SetCardDeck.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -225,6 +235,8 @@
 				305A6A20175F121F00BCE230 /* PlayingCardDeck.m in Sources */,
 				30D77AE517603CB700225B69 /* CardMatchingGame.m in Sources */,
 				308DA12417634ACC00EB45F1 /* SetGameViewController.m in Sources */,
+				303F724C1764B9CE004248F2 /* SetCard.m in Sources */,
+				303F724F1764B9F5004248F2 /* SetCardDeck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
