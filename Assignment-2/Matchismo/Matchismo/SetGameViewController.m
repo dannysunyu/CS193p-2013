@@ -53,6 +53,9 @@
 
 - (void)updateUI
 {
+    NSMutableAttributedString *descriptionOfLastFlip = [[NSMutableAttributedString alloc]
+                                                        initWithString:self.game.lastFlipResult ? self.game.lastFlipResult : @""];
+    
     for (UIButton *cardButton in self.cardButtons) {
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         SetCard *setCard = (SetCard *)card;
@@ -70,12 +73,18 @@
             [cardButton setBackgroundColor:[UIColor whiteColor]];
         }
         
+        NSRange range = [[descriptionOfLastFlip string] rangeOfString:card.contents];
+        if (range.location != NSNotFound) {
+            [descriptionOfLastFlip replaceCharactersInRange:range withAttributedString:[self attributedTitleForSetCard:setCard]];            
+        }
+
+        
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable ? 0.0 : 1.0;
         
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-    self.messageLabel.text = (self.game.lastFlipResult) ? [NSString stringWithFormat:@"%@", self.game.lastFlipResult] : @"";
+    self.messageLabel.attributedText = descriptionOfLastFlip;
 }
 
 - (void)viewDidLoad
@@ -83,6 +92,11 @@
     [super viewDidLoad];
     
     [self updateUI];
+}
+
+- (void)replaceContents:(NSString *)flipResult withSetCard:(SetCard *)setCard
+{
+    
 }
 
 - (UIColor *)titleColorOfSetCard:(SetCard *)setCard
