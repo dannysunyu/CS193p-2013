@@ -41,12 +41,6 @@
     return _game;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
 - (void)setFlipCount:(int)flipCount {
     _flipCount = flipCount;
     self.flipLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
@@ -54,7 +48,7 @@
 
 - (void)setCardButtons:(NSArray *)cardButtons {
     _cardButtons = cardButtons;
-    [self updateUI];
+//    [self updateUI];
 }
 
 - (void)updateUI
@@ -84,7 +78,14 @@
     self.messageLabel.text = (self.game.lastFlipResult) ? [NSString stringWithFormat:@"%@", self.game.lastFlipResult] : @"";
 }
 
-- (UIColor *)colorOfSetCard:(SetCard *)setCard
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self updateUI];
+}
+
+- (UIColor *)titleColorOfSetCard:(SetCard *)setCard
 {
     NSString *color = setCard.color;
     if ([color isEqualToString:@"green"]) {
@@ -108,28 +109,40 @@
     return title;
 }
 
+- (UIColor *)titleFillColorOfSetCard:(SetCard *)setCard
+{
+    UIColor *color = [self titleColorOfSetCard:setCard];
+    
+    if ([setCard.shading isEqualToString:@"striped"]) {
+        return [color colorWithAlphaComponent:0.1];
+    } else if ([setCard.shading isEqualToString:@"open"]) {
+        return [color colorWithAlphaComponent:0.0];
+    } else {
+        return color;
+    }
+}
+
 - (NSAttributedString *)attributedTitleForSetCard:(SetCard *)setCard
 {
     NSString *title = [self titleOfSetCard:setCard];
     NSRange titleRange = NSMakeRange(0, [title length]);
     NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:title];
     
-    UIColor *color = [self colorOfSetCard:setCard];    
+    UIColor *color = [self titleColorOfSetCard:setCard];
     if (color) {
         [attributedTitle addAttributes:@{ NSForegroundColorAttributeName : color } range:titleRange];
     }
     
-    if ([setCard.shading isEqualToString:@"striped"]) {
-        [attributedTitle addAttributes:@{ NSForegroundColorAttributeName : [color colorWithAlphaComponent:0.1],
-           NSStrokeWidthAttributeName : @-5, NSStrokeColorAttributeName : color} range:titleRange];
-    } else if ([setCard.shading isEqualToString:@"open"]) {
-        [attributedTitle addAttributes:@{ NSForegroundColorAttributeName : [color colorWithAlphaComponent:0.0],
-           NSStrokeWidthAttributeName : @-5, NSStrokeColorAttributeName : color} range:titleRange];
+    UIColor *alphaColor = [self titleFillColorOfSetCard:setCard];
+    if (alphaColor) {
+        [attributedTitle addAttributes:@{
+            NSForegroundColorAttributeName : alphaColor,
+            NSStrokeWidthAttributeName : @-5,
+            NSStrokeColorAttributeName : color} range:titleRange];
     }
     
     return attributedTitle;
 }
-
 
 - (IBAction)flipCard:(UIButton *)sender
 {
