@@ -359,9 +359,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Match" id="deF-jQ-cUm"/>
                     <connections>
-                        <outlet property="flipsLabel" destination="xBp-t9-eD3" id="hI1-dy-BP1"/>
+                        <outlet property="flipsLabel" destination="xBp-t9-eD3" id="AI1-gr-oOq"/>
                         <outlet property="messageLabel" destination="QgW-nR-FPO" id="ply-AS-1KF"/>
-                        <outlet property="scoreLabel" destination="Z2a-O6-YsT" id="zgh-HD-fJz"/>
+                        <outlet property="scoreLabel" destination="Z2a-O6-YsT" id="o8a-Eg-ORn"/>
                         <outletCollection property="cardButtons" destination="voC-ug-Dxp" id="hKA-F1-aj6"/>
                         <outletCollection property="cardButtons" destination="BiE-Iz-Dot" id="gg1-zr-9Ka"/>
                         <outletCollection property="cardButtons" destination="taM-TE-9wM" id="GE1-vd-ln9"/>
@@ -378,6 +378,22 @@
                         <outletCollection property="cardButtons" destination="15A-z9-WP6" id="DHd-fp-eta"/>
                         <outletCollection property="cardButtons" destination="WiU-fp-eT8" id="zEV-sN-3Sg"/>
                         <outletCollection property="cardButtons" destination="IlV-Il-rvw" id="lxH-nR-zgr"/>
+                        <outletCollection property="cardButtons" destination="voC-ug-Dxp" id="I2a-hZ-aDE"/>
+                        <outletCollection property="cardButtons" destination="BiE-Iz-Dot" id="wRM-Ev-sew"/>
+                        <outletCollection property="cardButtons" destination="taM-TE-9wM" id="ed7-DZ-qJY"/>
+                        <outletCollection property="cardButtons" destination="K6o-kq-abm" id="4mX-FZ-mDT"/>
+                        <outletCollection property="cardButtons" destination="byN-TJ-Ikb" id="Tis-aI-hgc"/>
+                        <outletCollection property="cardButtons" destination="Vot-ku-xlF" id="uAd-DV-Bvv"/>
+                        <outletCollection property="cardButtons" destination="qGd-Gt-39x" id="HBi-0J-XPW"/>
+                        <outletCollection property="cardButtons" destination="cSe-1y-ocz" id="6XP-b6-bAj"/>
+                        <outletCollection property="cardButtons" destination="arN-li-tL9" id="5hx-4G-OXp"/>
+                        <outletCollection property="cardButtons" destination="3SI-si-pSX" id="3l6-Xp-UN6"/>
+                        <outletCollection property="cardButtons" destination="18W-Jf-7Mb" id="zJs-Oh-YDv"/>
+                        <outletCollection property="cardButtons" destination="Tt9-MY-2wS" id="fhC-8x-jho"/>
+                        <outletCollection property="cardButtons" destination="Jc2-lQ-f7h" id="qt6-S0-RJ3"/>
+                        <outletCollection property="cardButtons" destination="15A-z9-WP6" id="9PO-qT-CaM"/>
+                        <outletCollection property="cardButtons" destination="WiU-fp-eT8" id="3wK-M8-2xF"/>
+                        <outletCollection property="cardButtons" destination="IlV-Il-rvw" id="Cif-Av-xOU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -889,7 +905,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Set" id="r9b-Ca-8AN"/>
                     <connections>
-                        <outlet property="flipLabel" destination="UVh-WW-X58" id="0T6-92-ods"/>
+                        <outlet property="flipsLabel" destination="UVh-WW-X58" id="KXA-FM-Ido"/>
                         <outlet property="messageLabel" destination="Xa4-9J-jQv" id="NaD-fw-5mH"/>
                         <outlet property="scoreLabel" destination="Xcz-lV-ewu" id="113-gg-6PP"/>
                         <outletCollection property="cardButtons" destination="0fw-zx-2Hw" id="c8l-1b-RaU"/>
@@ -924,27 +940,28 @@
         </scene>
     </scenes>
     <classes>
-        <class className="CardGameViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
+        <class className="BaseGameViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseGameViewController.h"/>
             <relationships>
-                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="messageLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
             </relationships>
         </class>
+        <class className="CardGameViewController" superclassName="BaseGameViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
+            </relationships>
+        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
-        <class className="SetGameViewController" superclassName="UIViewController">
+        <class className="SetGameViewController" superclassName="BaseGameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetGameViewController.h"/>
             <relationships>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="flipLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="messageLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
             </relationships>
         </class>
     </classes>

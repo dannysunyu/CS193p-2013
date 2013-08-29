@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300EE60717CF8546000A0407 /* BaseGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 300EE60617CF8546000A0407 /* BaseGameViewController.m */; };
 		303F724C1764B9CE004248F2 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 303F724B1764B9CE004248F2 /* SetCard.m */; };
 		303F724F1764B9F5004248F2 /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 303F724E1764B9F5004248F2 /* SetCardDeck.m */; };
 		30513660176081AC00E68934 /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = 3051365F176081AC00E68934 /* cardback.png */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		300EE60517CF8546000A0407 /* BaseGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseGameViewController.h; sourceTree = "<group>"; };
+		300EE60617CF8546000A0407 /* BaseGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGameViewController.m; sourceTree = "<group>"; };
 		303F724A1764B9CE004248F2 /* SetCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCard.h; path = Model/SetCard.h; sourceTree = "<group>"; };
 		303F724B1764B9CE004248F2 /* SetCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCard.m; path = Model/SetCard.m; sourceTree = "<group>"; };
 		303F724D1764B9F5004248F2 /* SetCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCardDeck.h; path = Model/SetCardDeck.h; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				30ECD633175DE09A00BA4D38 /* CardGameAppDelegate.h */,
 				30ECD634175DE09A00BA4D38 /* CardGameAppDelegate.m */,
 				30ECD63C175DE09A00BA4D38 /* MainStoryboard.storyboard */,
+				300EE60517CF8546000A0407 /* BaseGameViewController.h */,
+				300EE60617CF8546000A0407 /* BaseGameViewController.m */,
 				30ECD63F175DE09A00BA4D38 /* CardGameViewController.h */,
 				30ECD640175DE09A00BA4D38 /* CardGameViewController.m */,
 				308DA12217634ACC00EB45F1 /* SetGameViewController.h */,
@@ -237,6 +242,7 @@
 				308DA12417634ACC00EB45F1 /* SetGameViewController.m in Sources */,
 				303F724C1764B9CE004248F2 /* SetCard.m in Sources */,
 				303F724F1764B9F5004248F2 /* SetCardDeck.m in Sources */,
+				300EE60717CF8546000A0407 /* BaseGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

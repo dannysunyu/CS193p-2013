@@ -13,13 +13,6 @@
 
 @interface SetGameViewController ()
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-
-@property (weak, nonatomic) IBOutlet UILabel *flipLabel;
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
-
-@property (nonatomic) int flipCount;
 @property (strong, nonatomic) CardMatchingGame *game;
 @end
 
@@ -39,16 +32,6 @@
         _game.numberOfCardsToMatch = SET_CARD_GAME_NUMBER_OF_CARDS_TO_MATCH;
     }
     return _game;
-}
-
-- (void)setFlipCount:(int)flipCount {
-    _flipCount = flipCount;
-    self.flipLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
-}
-
-- (void)setCardButtons:(NSArray *)cardButtons {
-    _cardButtons = cardButtons;
-//    [self updateUI];
 }
 
 - (void)updateUI
