@@ -11,9 +11,7 @@
 #import "CardMatchingGame.h"
 
 @interface CardGameViewController ()
-
 @property (strong, nonatomic) CardMatchingGame *game;
-
 @end
 
 @implementation CardGameViewController
@@ -60,7 +58,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self updateUI];
 }
 

@@ -12,7 +12,6 @@
 #import "CardMatchingGame.h"
 
 @interface SetGameViewController ()
-
 @property (strong, nonatomic) CardMatchingGame *game;
 @end
 
@@ -61,10 +60,8 @@
             [descriptionOfLastFlip replaceCharactersInRange:range withAttributedString:[self attributedTitleForSetCard:setCard]];            
         }
 
-        
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable ? 0.0 : 1.0;
-        
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.messageLabel.attributedText = descriptionOfLastFlip;
@@ -72,14 +69,8 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
+    [super viewDidLoad];    
     [self updateUI];
-}
-
-- (void)replaceContents:(NSString *)flipResult withSetCard:(SetCard *)setCard
-{
-    
 }
 
 - (UIColor *)titleColorOfSetCard:(SetCard *)setCard
