@@ -73,17 +73,33 @@
     [self updateUI];
 }
 
+- (NSString *)getSymbolString:(NSUInteger)symbol
+{
+    switch (symbol) {
+        case 1:
+            return @"▲";
+        case 2:
+            return @"●";
+        case 3:
+            return @"■";
+        default:
+            return @"?";
+    }
+}
+
 - (UIColor *)titleColorOfSetCard:(SetCard *)setCard
 {
-    NSString *color = setCard.color;
-    if ([color isEqualToString:@"green"]) {
-        return [UIColor greenColor];
-    } else if ([color isEqualToString:@"red"]) {
-        return [UIColor redColor];
-    } else if ([color isEqualToString:@"purple"]) {
-        return [UIColor blueColor];
-    } else {
-        return nil;
+    NSUInteger color = setCard.color;
+    switch (color) {
+        case 1:
+            return [UIColor greenColor];
+        case 2:
+            return [UIColor redColor];
+        case 3:
+            return [UIColor purpleColor];
+            
+        default:
+            return nil;
     }
 }
 
@@ -92,7 +108,7 @@
     NSString *title = [[NSString alloc] init];
     
     for (int i = 1; i <= [setCard number]; i++) {
-        title = [title stringByAppendingString:setCard.symbol];
+        title = [title stringByAppendingString:[self getSymbolString:setCard.symbol]];
     }
     return title;
 }
@@ -101,12 +117,15 @@
 {
     UIColor *color = [self titleColorOfSetCard:setCard];
     
-    if ([setCard.shading isEqualToString:@"striped"]) {
-        return [color colorWithAlphaComponent:0.1];
-    } else if ([setCard.shading isEqualToString:@"open"]) {
-        return [color colorWithAlphaComponent:0.0];
-    } else {
-        return color;
+    switch (setCard.shading) {
+        case 1:
+            return color;
+        case 2:
+            return [color colorWithAlphaComponent:0.1];
+        case 3:
+            return [color colorWithAlphaComponent:0.0];
+        default:
+            return nil;
     }
 }
 
@@ -131,6 +150,8 @@
     
     return attributedTitle;
 }
+
+
 
 - (IBAction)flipCard:(UIButton *)sender
 {

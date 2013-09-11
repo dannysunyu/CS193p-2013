@@ -42,18 +42,20 @@
 
 + (NSArray *)validSymbols
 {
-    //    return @[@"diamond", @"squiggle", @"oval"];
-    return @[@"▲", @"●", @"■"];
+//    return @[@"diamond", @"squiggle", @"oval"];
+//    return @[@"▲", @"●", @"■"];
+    return @[@(1), @(2), @(3)];
 }
 
 + (NSArray *)validShadings
 {
-    return @[@"solid", @"striped", @"open"];
+//    return @[@"solid", @"striped", @"open"];
+    return @[@(1), @(2), @(3)];
 }
 
 + (NSArray *)validColors
 {
-    return @[@"red", @"green", @"purple"];
+    return @[@(1), @(2), @(3)];
 }
 
 + (NSUInteger) maxNumber
@@ -73,77 +75,77 @@
 {
     SetCard *setCardOne = (SetCard *)setCards[0];
     SetCard *setCardTwo = (SetCard *)setCards[1];
-    return ([self.symbol isEqualToString:setCardOne.symbol] &&
-            [self.symbol isEqualToString:setCardTwo.symbol] &&
-            [setCardOne.symbol isEqualToString:setCardTwo.symbol]) ||
-    (![self.symbol isEqualToString:setCardOne.symbol] &&
-     ![self.symbol isEqualToString:setCardTwo.symbol] &&
-     ![setCardOne.symbol isEqualToString:setCardTwo.symbol]);
+    return (self.symbol == setCardOne.symbol &&
+            self.symbol == setCardTwo.symbol &&
+            setCardOne.symbol == setCardTwo.symbol) ||
+           (self.symbol != setCardOne.symbol &&
+            self.symbol != setCardTwo.symbol &&
+            setCardOne.symbol != setCardTwo.symbol);
 }
 
 - (BOOL)hasSameOrDifferentShadings:(NSArray *)setCards
 {
     SetCard *setCardOne = (SetCard *)setCards[0];
     SetCard *setCardTwo = (SetCard *)setCards[1];
-    return ([self.shading isEqualToString:setCardOne.shading] &&
-            [self.shading isEqualToString:setCardTwo.shading] &&
-            [setCardOne.shading isEqualToString:setCardTwo.shading]) ||
-    (![self.shading isEqualToString:setCardOne.shading] &&
-     ![self.shading isEqualToString:setCardTwo.shading] &&
-     ![setCardOne.shading isEqualToString:setCardTwo.shading]);
+    return (self.shading == setCardOne.shading &&
+            self.shading == setCardTwo.shading &&
+            setCardOne.shading == setCardTwo.shading) ||
+           (self.shading != setCardOne.shading &&
+            self.shading != setCardTwo.shading &&
+            setCardOne.shading != setCardTwo.shading);
 }
 
 - (BOOL)hasSameOrDifferentColors:(NSArray *)setCards
 {
     SetCard *setCardOne = (SetCard *)setCards[0];
     SetCard *setCardTwo = (SetCard *)setCards[1];
-    return ([self.color isEqualToString:setCardOne.color] &&
-            [self.color isEqualToString:setCardTwo.color] &&
-            [setCardOne.color isEqualToString:setCardTwo.color]) ||
-    (![self.color isEqualToString:setCardOne.color] &&
-     ![self.color isEqualToString:setCardTwo.color] &&
-     ![setCardOne.color isEqualToString:setCardTwo.color]);
+    return (self.color == setCardOne.color &&
+            self.color == setCardTwo.color &&
+            setCardOne.color == setCardTwo.color) ||
+           (self.color != setCardOne.color &&
+            self.color != setCardTwo.color &&
+            setCardOne.color != setCardTwo.color);
 }
 
-- (void)setSymbol:(NSString *)symbol
+- (void)setSymbol:(NSUInteger)symbol
 {
-    if ([[SetCard validSymbols] containsObject:symbol]) {
+    if ([[SetCard validSymbols] containsObject:@(symbol)]) {
         _symbol = symbol;
     }
 }
 
-- (NSString *)symbol
+- (NSUInteger)symbol
 {
-    return _symbol ? _symbol : @"?";
+    return _symbol ? _symbol : 0;
 }
 
-- (void)setShading:(NSString *)shading
+- (void)setShading:(NSUInteger)shading
 {
-    if ([[SetCard validShadings] containsObject:shading]) {
+    if ([[SetCard validShadings] containsObject:@(shading)]) {
         _shading = shading;
     }
 }
 
-- (NSString *)shading
+- (NSUInteger)shading
 {
-    return _shading ? _shading : @"?";
+    return _shading ? _shading : 0;
 }
 
-- (void)setColor:(NSString *)color
+- (void)setColor:(NSUInteger)color
 {
-    if ([[SetCard validColors] containsObject:color]) {
+    if ([[SetCard validColors] containsObject:@(color)]) {
         _color = color;
     }
 }
 
-- (NSString *)color
+- (NSUInteger)color
 {
-    return _color ? _color : @"?";
+    return _color ? _color : 0;
 }
 
 - (NSString *)contents
 {
-    return [NSString stringWithFormat:@"%d %@ %@ %@", self.number, self.symbol, self.shading, self.color];
+    return [NSString stringWithFormat:@"%d %d %d %d", self.number, self.symbol, self.shading, self.color];
 }
 
 - (NSString *)description
