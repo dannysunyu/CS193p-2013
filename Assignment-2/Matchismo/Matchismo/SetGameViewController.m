@@ -151,8 +151,6 @@
     return attributedTitle;
 }
 
-
-
 - (IBAction)flipCard:(UIButton *)sender
 {
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
