@@ -7,6 +7,10 @@
 //
 
 #import "PlayingCardGameViewController.h"
+#import "PlayingCard.h"
+#import "PlayingCardView.h"
+#import "PlayingCardCollectionViewCell.h"
+#import "PlayingCardDeck.h"
 
 @interface PlayingCardGameViewController ()
 
@@ -14,25 +18,33 @@
 
 @implementation PlayingCardGameViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (Deck *)createDeck
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    return [[PlayingCardDeck alloc] init];
+}
+
+- (NSUInteger)startingCardCount
+{
+    return 22;
+}
+
+- (NSUInteger)numberOfCardsToMatch
+{
+    return 2;
+}
+
+- (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
+{
+    if ([cell isKindOfClass:[PlayingCardCollectionViewCell class]]) {
+        PlayingCardView *playingCardView = ((PlayingCardCollectionViewCell *)cell).playingCardView;
+        if ([card isKindOfClass:[PlayingCard class]]) {
+            PlayingCard *playingCard = (PlayingCard *)card;
+            playingCardView.rank = playingCard.rank;
+            playingCardView.suit = playingCard.suit;
+            playingCardView.faceUp = playingCard.isFaceUp;
+            playingCardView.alpha = playingCard.isUnplayable ? 0.3 : 1.0;
+        }
     }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

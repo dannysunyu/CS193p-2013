@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlayingCardView.h"
 
-@interface PlayingCardCollectionView : UICollectionViewCell
+@interface PlayingCardCollectionViewCell : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet PlayingCardView *playingCardView;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SetCardGameViewController.h"
+#import "SetCardDeck.h"
 
 @interface SetCardGameViewController ()
 
@@ -14,25 +15,24 @@
 
 @implementation SetCardGameViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (Deck *)createDeck
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    return [[SetCardDeck alloc] init];
 }
 
-- (void)viewDidLoad
+- (NSUInteger)startingCardCount
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    return 12;
 }
 
-- (void)didReceiveMemoryWarning
+- (NSUInteger)numberOfCardsToMatch
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return 3;
+}
+
+- (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
+{
+    
 }
 
 @end
