@@ -30,11 +30,11 @@
 {
     if (!_game) {
         _game = [[CardMatchingGame alloc] initWithCardCount:self.startingCardCount
-                                                  usingDeck:[self createDeck]];
-        _game.numberOfCardsToMatch = self.numberOfCardsToMatch;
-        _game.flipCost = self.flipCost;
-        _game.matchBonus = self.matchBonus;
-        _game.mismatchPenalty = self.mismatchPenalty;
+                                                  usingDeck:[self createDeck]
+                                                 matchCount:self.numberOfCardsToMatch
+                                                 matchBonus:self.matchBonus
+                                            mismatchPenalty:self.mismatchPenalty
+                                                   flipCost:self.flipCost];
     }
     return _game;
 }
@@ -81,15 +81,10 @@
 
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)asker
-{
-    return 1;
-}
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return self.startingCardCount;
+    return [self.game currentlyCardCount];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -132,8 +127,19 @@
 {
     CGPoint tapLocation = [gesture locationInView:self.cardCollectionView];
     NSIndexPath *indexPath = [self.cardCollectionView indexPathForItemAtPoint:tapLocation];
-    if (indexPath) {
+    if (indexPath) {        
         [self.game flipCardAtIndex:indexPath.item];
+        
+        if (self.shouldRemoveUnplayableCards) {
+            for (int i = 0; i < self.startingCardCount; i++) {
+                Card *card = [self.game cardAtIndex:i];
+                if (card.isUnplayable) {
+                    [self.game removeCardAtIndex:i];
+                    [self.cardCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
+                }
+            }
+        }
+        
         self.flipCount++;
         [self updateUI];
         self.gameResult.score = self.game.score;

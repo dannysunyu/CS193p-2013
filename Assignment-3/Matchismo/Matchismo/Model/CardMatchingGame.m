@@ -19,24 +19,7 @@
 #define DEFAULT_FLIP_COST 1
 #define DEFAULT_MISMATCH_PENALTY 2
 #define DEFAULT_MATCH_BONUS 4
-
-- (int)flipCost
-{
-    if (!_flipCost) _flipCost = DEFAULT_FLIP_COST;
-    return _flipCost;
-}
-
-- (int)matchBonus
-{
-    if (!_matchBonus) _matchBonus = DEFAULT_MATCH_BONUS;
-    return _matchBonus;
-}
-
-- (int)mismatchPenalty
-{
-    if (!_mismatchPenalty) _mismatchPenalty = DEFAULT_MISMATCH_PENALTY;
-    return _mismatchPenalty;
-}
+#define DEFAULT_CARD_MATCH_COUNT 2
 
 - (NSMutableArray *)cards
 {
@@ -44,12 +27,22 @@
     return _cards;
 }
 
+- (NSUInteger)currentlyCardCount
+{
+    return [self.cards count];
+}
+
 - (id)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck
+{
+    return [self initWithCardCount:count usingDeck:deck matchCount:DEFAULT_CARD_MATCH_COUNT matchBonus:DEFAULT_MATCH_BONUS mismatchPenalty:DEFAULT_MISMATCH_PENALTY flipCost:DEFAULT_FLIP_COST];
+}
+
+- (id)initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck matchCount:(int)matchCount matchBonus:(int)bonous mismatchPenalty:(int)penalty flipCost:(int)cost
 {
     self = [super init];
     
     if (self) {
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < cardCount; i++) {
             Card *card = [deck drawRandomCard];
             if (!card) {
                 self = nil;
@@ -57,8 +50,13 @@
                 self.cards[i] = card;
             }
         }
+        
+        _numberOfCardsToMatch = matchCount;
+        _matchBonus = bonous;
+        _mismatchPenalty = penalty;
+        _flipCost = cost;
     }
-    
+
     return self;
 }
 
@@ -77,7 +75,7 @@
             NSArray *pendingCards = [self otherCardsPendingForMatch];
             if ([pendingCards count] == self.numberOfCardsToMatch - 1) {
                 int matchScore = [card match:pendingCards];
-                if (matchScore) {
+                if (matchScore) {                    
                     for (id otherCard in pendingCards) {
                         Card *pendingCard = (Card *)otherCard;
                         pendingCard.unplayable = YES;
@@ -102,6 +100,11 @@
         }
         card.faceUp = !card.isFaceUp;
     }
+}
+
+- (void)removeCardAtIndex:(NSUInteger)index
+{
+    [self.cards removeObjectAtIndex:index];
 }
 
 - (NSArray *)otherCardsPendingForMatch

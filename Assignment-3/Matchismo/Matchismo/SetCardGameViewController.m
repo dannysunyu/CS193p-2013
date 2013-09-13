@@ -18,6 +18,8 @@
 #define SET_GAME_MATCH_BONUS 3
 #define SET_GAME_MISMATCH_PENALTY 2
 
+#define SET_CARD_CELL_IDENTIFIER @"SetCard"
+
 @interface SetCardGameViewController ()
 
 @end
@@ -56,7 +58,12 @@
 
 - (NSString *)cellIdentifier
 {
-    return @"SetCard";
+    return SET_CARD_CELL_IDENTIFIER;
+}
+
+- (BOOL)shouldRemoveUnplayableCards
+{
+    return YES;
 }
 
 - (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card

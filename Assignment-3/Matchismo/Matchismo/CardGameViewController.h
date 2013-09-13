@@ -26,4 +26,6 @@
 
 @property (readonly, nonatomic) NSString *cellIdentifier;
 
+@property (readonly, nonatomic) BOOL shouldRemoveUnplayableCards;
+
 @end
