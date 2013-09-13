@@ -38,14 +38,14 @@
 
 + (NSArray *)validSymbols
 {
-    //    return @[@"diamond", @"squiggle", @"oval"];
-    //    return @[@"▲", @"●", @"■"];
+//    return @[@"diamond", @"squiggle", @"oval"];
+//    return @[@"▲", @"●", @"■"];
     return @[@(1), @(2), @(3)];
 }
 
 + (NSArray *)validShadings
 {
-    //    return @[@"solid", @"striped", @"open"];
+//    return @[@"solid", @"striped", @"open"];
     return @[@(1), @(2), @(3)];
 }
 
@@ -65,15 +65,19 @@
     SetCard *setCardOne = (SetCard *)setCards[0];
     SetCard *setCardTwo = (SetCard *)setCards[1];
     return (self.number == setCardOne.number && self.number == setCardTwo.number) ||
-           (self.number != setCardOne.number && self.number != setCardTwo.number && setCardOne.number != setCardTwo.number);
+    (self.number != setCardOne.number && self.number != setCardTwo.number && setCardOne.number != setCardTwo.number);
 }
 
 - (BOOL)hasSameOrDifferentSymbols:(NSArray *)setCards
 {
     SetCard *setCardOne = (SetCard *)setCards[0];
     SetCard *setCardTwo = (SetCard *)setCards[1];
-    return (self.symbol == setCardOne.symbol && self.symbol == setCardTwo.symbol && setCardOne.symbol == setCardTwo.symbol) ||
-           (self.symbol != setCardOne.symbol && self.symbol != setCardTwo.symbol && setCardOne.symbol != setCardTwo.symbol);
+    return (self.symbol == setCardOne.symbol &&
+            self.symbol == setCardTwo.symbol &&
+            setCardOne.symbol == setCardTwo.symbol) ||
+           (self.symbol != setCardOne.symbol &&
+            self.symbol != setCardTwo.symbol &&
+            setCardOne.symbol != setCardTwo.symbol);
 }
 
 - (BOOL)hasSameOrDifferentShadings:(NSArray *)setCards
@@ -83,17 +87,21 @@
     return (self.shading == setCardOne.shading &&
             self.shading == setCardTwo.shading &&
             setCardOne.shading == setCardTwo.shading) ||
-    (self.shading != setCardOne.shading &&
-     self.shading != setCardTwo.shading &&
-     setCardOne.shading != setCardTwo.shading);
+           (self.shading != setCardOne.shading &&
+            self.shading != setCardTwo.shading &&
+            setCardOne.shading != setCardTwo.shading);
 }
 
 - (BOOL)hasSameOrDifferentColors:(NSArray *)setCards
 {
     SetCard *setCardOne = (SetCard *)setCards[0];
     SetCard *setCardTwo = (SetCard *)setCards[1];
-    return (self.color == setCardOne.color && self.color == setCardTwo.color && setCardOne.color == setCardTwo.color) ||
-           (self.color != setCardOne.color && self.color != setCardTwo.color && setCardOne.color != setCardTwo.color);
+    return (self.color == setCardOne.color &&
+            self.color == setCardTwo.color &&
+            setCardOne.color == setCardTwo.color) ||
+           (self.color != setCardOne.color &&
+            self.color != setCardTwo.color &&
+            setCardOne.color != setCardTwo.color);
 }
 
 - (void)setSymbol:(NSUInteger)symbol

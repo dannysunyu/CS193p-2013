@@ -20,4 +20,10 @@
 @property (readonly, nonatomic) NSUInteger startingCardCount;
 @property (readonly, nonatomic) NSUInteger numberOfCardsToMatch;
 
+@property (readonly, nonatomic) NSUInteger matchBonus;
+@property (readonly, nonatomic) NSUInteger mismatchPenalty;
+@property (readonly, nonatomic) NSUInteger flipCost;
+
+@property (readonly, nonatomic) NSString *cellIdentifier;
+
 @end

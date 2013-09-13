@@ -32,6 +32,9 @@
         _game = [[CardMatchingGame alloc] initWithCardCount:self.startingCardCount
                                                   usingDeck:[self createDeck]];
         _game.numberOfCardsToMatch = self.numberOfCardsToMatch;
+        _game.flipCost = self.flipCost;
+        _game.matchBonus = self.matchBonus;
+        _game.mismatchPenalty = self.mismatchPenalty;
     }
     return _game;
 }
@@ -60,6 +63,21 @@
     return 0;
 }
 
+- (NSUInteger)matchBonus
+{
+    return 0;
+}
+
+- (NSUInteger)mismatchPenalty
+{
+    return 0;
+}
+
+- (NSString *)cellIdentifier
+{
+    return nil;
+}
+
 
 #pragma mark - UICollectionViewDataSource
 
@@ -77,7 +95,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayingCard" forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self cellIdentifier] forIndexPath:indexPath];
     Card *card = [self.game cardAtIndex:indexPath.item];
     [self updateCell:cell usingCard:card];
     return cell;

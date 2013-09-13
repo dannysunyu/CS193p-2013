@@ -12,6 +12,12 @@
 #import "PlayingCardCollectionViewCell.h"
 #import "PlayingCardDeck.h"
 
+#define PLAYING_CARD_GAME_STARTING_CARD_COUNT 22
+#define PLAYING_CARD_GAME_NUMBER_OF_CARDS_TO_MATCH 2
+#define PLAYING_CARD_GAME_FLIP_COST 1
+#define PLAYING_CARD_GAME_MATCH_BONUS 4
+#define PLAYING_CARD_GAME_MISMATCH_PENALTY 2
+
 @interface PlayingCardGameViewController ()
 
 @end
@@ -25,12 +31,32 @@
 
 - (NSUInteger)startingCardCount
 {
-    return 22;
+    return PLAYING_CARD_GAME_STARTING_CARD_COUNT;
 }
 
 - (NSUInteger)numberOfCardsToMatch
 {
-    return 2;
+    return PLAYING_CARD_GAME_NUMBER_OF_CARDS_TO_MATCH;
+}
+
+- (NSUInteger)flipCost
+{
+    return PLAYING_CARD_GAME_FLIP_COST;
+}
+
+- (NSUInteger)matchBonus
+{
+    return PLAYING_CARD_GAME_MATCH_BONUS;
+}
+
+- (NSUInteger)mismatchPenalty
+{
+    return PLAYING_CARD_GAME_MISMATCH_PENALTY;
+}
+
+- (NSString *)cellIdentifier
+{
+    return @"PlayingCard";
 }
 
 - (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card

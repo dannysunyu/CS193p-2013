@@ -20,16 +20,16 @@
 #define DEFAULT_MISMATCH_PENALTY 2
 #define DEFAULT_MATCH_BONUS 4
 
-- (int)matchBonus
-{
-    if (!_matchBonus) _matchBonus = DEFAULT_MATCH_BONUS;
-    return _matchBonus;
-}
-
 - (int)flipCost
 {
     if (!_flipCost) _flipCost = DEFAULT_FLIP_COST;
     return _flipCost;
+}
+
+- (int)matchBonus
+{
+    if (!_matchBonus) _matchBonus = DEFAULT_MATCH_BONUS;
+    return _matchBonus;
 }
 
 - (int)mismatchPenalty
