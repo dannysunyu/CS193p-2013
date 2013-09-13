@@ -17,10 +17,6 @@
 
 @implementation SetCard
 
-@synthesize color = _color;
-@synthesize shading = _shading;
-@synthesize symbol = _symbol;
-
 - (int)match:(NSArray *)otherCards
 {
     int score = 0;
@@ -55,6 +51,7 @@
 
 + (NSArray *)validColors
 {
+//    return @[@"Green", @"Red", @"Purple"];
     return @[@(1), @(2), @(3)];
 }
 
@@ -114,11 +111,6 @@
     }
 }
 
-- (NSUInteger)symbol
-{
-    return _symbol ? _symbol : 0;
-}
-
 - (void)setShading:(NSUInteger)shading
 {
     if ([[SetCard validShadings] containsObject:@(shading)]) {
@@ -126,21 +118,11 @@
     }
 }
 
-- (NSUInteger)shading
-{
-    return _shading ? _shading : 0;
-}
-
 - (void)setColor:(NSUInteger)color
 {
     if ([[SetCard validColors] containsObject:@(color)]) {
         _color = color;
     }
-}
-
-- (NSUInteger)color
-{
-    return _color ? _color : 0;
 }
 
 - (NSString *)contents
