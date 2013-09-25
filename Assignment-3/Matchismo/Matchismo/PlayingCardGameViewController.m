@@ -36,11 +36,6 @@
     return PLAYING_CARD_GAME_STARTING_CARD_COUNT;
 }
 
-- (NSUInteger)cardsCount
-{
-    return [self cardsCount];
-}
-
 - (NSUInteger)numberOfCardsToMatch
 {
     return PLAYING_CARD_GAME_NUMBER_OF_CARDS_TO_MATCH;

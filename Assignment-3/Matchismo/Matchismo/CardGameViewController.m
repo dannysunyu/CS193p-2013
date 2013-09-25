@@ -106,11 +106,27 @@
 
 - (void)updateUI
 {
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+    NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
+    
     for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]) {
         NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
         Card *card = [self.game cardAtIndex:indexPath.item];
         [self updateCell:cell usingCard:card];
+        
+        if (self.shouldRemoveUnplayableCards) {
+            if (card.isUnplayable) {
+                [indexSet addIndex:indexPath.item];
+                [indexPaths addObject:indexPath];
+            }
+        }
     }
+    
+    if (self.shouldRemoveUnplayableCards) {
+        [self.game removeCardsAtIndexes:indexSet];
+        [self.cardCollectionView deleteItemsAtIndexPaths:indexPaths];
+    }
+    
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
 }
 
@@ -130,20 +146,46 @@
     if (indexPath) {        
         [self.game flipCardAtIndex:indexPath.item];
         
-        if (self.shouldRemoveUnplayableCards) {
-            for (int i = 0; i < self.startingCardCount; i++) {
-                Card *card = [self.game cardAtIndex:i];
-                if (card.isUnplayable) {
-                    [self.game removeCardAtIndex:i];
-                    [self.cardCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
-                }
-            }
-        }
+//        NSIndexSet *indexSetForRemoval = [self indexSetForRemovedCards];
+//        [self.game removeCardsAtIndexes:indexSetForRemoval];
+//        
+//        NSArray *indexPathsForRemoval = [self indexPathsForRemovedCards];
+//        [self.cardCollectionView deleteItemsAtIndexPaths: indexPathsForRemoval];
         
         self.flipCount++;
         [self updateUI];
+        
         self.gameResult.score = self.game.score;
     }
+}
+
+- (NSIndexSet *)indexSetForRemovedCards
+{
+    NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
+    for (int i = 0; i < self.game.currentlyCardCount; i++) {
+        Card *card = [self.game cardAtIndex:i];
+ 
+        if (card.isUnplayable) {
+            
+            [indexSet addIndex:i];
+        }
+    }
+    return indexSet;
+}
+
+- (NSArray *)indexPathsForRemovedCards
+{
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+
+    for (int i = 0; i < self.game.currentlyCardCount; i++) {
+        Card *card = [self.game cardAtIndex:i];
+        if (card.isUnplayable) {
+            NSLog(@"Card to be removed: %@", card);
+            [indexPaths addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+        }
+    }
+    
+    return indexPaths;
 }
 
 @end

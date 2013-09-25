@@ -25,7 +25,9 @@
 
 - (Card *)cardAtIndex:(NSUInteger)index;
 
-- (void)removeCardAtIndex:(NSUInteger)index;
+- (void)removeCardsAtIndexes:(NSIndexSet *)indexSet;
+
+- (Card *)addCardInPlay;
 
 @property (nonatomic, readonly) int score;
 @property (nonatomic, readonly) NSUInteger numberOfCardsToMatch;

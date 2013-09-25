@@ -9,6 +9,7 @@
 #import "CardMatchingGame.h"
 
 @interface CardMatchingGame()
+@property (strong, nonatomic) Deck *deck;
 @property (strong, nonatomic) NSMutableArray *cards;
 @property (readwrite, nonatomic) int score;
 @property (strong, readwrite, nonatomic) NSString *lastFlipResult;
@@ -51,6 +52,7 @@
             }
         }
         
+        _deck = deck;
         _numberOfCardsToMatch = matchCount;
         _matchBonus = bonous;
         _mismatchPenalty = penalty;
@@ -79,8 +81,11 @@
                     for (id otherCard in pendingCards) {
                         Card *pendingCard = (Card *)otherCard;
                         pendingCard.unplayable = YES;
+                        
+                        NSLog(@"Matched %@", pendingCard);
                     }
                     card.unplayable = YES;
+                    NSLog(@"Matched %@", card);
                     
                     self.lastFlipResult = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, [pendingCards componentsJoinedByString:@" & "], (matchScore * self.matchBonus)];
                     
@@ -102,9 +107,16 @@
     }
 }
 
-- (void)removeCardAtIndex:(NSUInteger)index
+- (void)removeCardsAtIndexes:(NSIndexSet *)indexSet
 {
-    [self.cards removeObjectAtIndex:index];
+    [self.cards removeObjectsAtIndexes:indexSet];
+}
+
+- (Card *)addCardInPlay
+{
+    Card *card = [self.deck drawRandomCard];
+    [self.cards addObject:card];
+    return card;
 }
 
 - (NSArray *)otherCardsPendingForMatch
