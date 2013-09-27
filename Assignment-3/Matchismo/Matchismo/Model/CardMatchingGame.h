@@ -14,12 +14,7 @@
 - (id)initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck;
 
 // designated initializer
-- (id)initWithCardCount:(NSUInteger)cardCount
-              usingDeck:(Deck *)deck
-             matchCount:(int)matchCount
-             matchBonus:(int)matchBonous
-        mismatchPenalty:(int)mismatchPenalty
-               flipCost:(int)flipCost;
+- (id)initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck matchCount:(int)matchCount matchBonus:(int)matchBonous mismatchPenalty:(int)mismatchPenalty flipCost:(int)flipCost;
 
 - (void)flipCardAtIndex:(NSUInteger)index;
 
@@ -27,7 +22,7 @@
 
 - (void)removeCardsAtIndexes:(NSIndexSet *)indexSet;
 
-- (Card *)addCardInPlay;
+- (Card *)putRandomCardInPlay;
 
 @property (nonatomic, readonly) int score;
 @property (nonatomic, readonly) NSUInteger numberOfCardsToMatch;
@@ -36,5 +31,6 @@
 @property (nonatomic, readonly) int matchBonus;
 @property (nonatomic, readonly) int mismatchPenalty;
 @property (strong, nonatomic, readonly) NSString *lastFlipResult;
+//@property (strong, nonatomic, readonly) NSArray *unplayableCards;
 
 @end

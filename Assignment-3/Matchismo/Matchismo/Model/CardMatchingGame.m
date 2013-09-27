@@ -112,10 +112,12 @@
     [self.cards removeObjectsAtIndexes:indexSet];
 }
 
-- (Card *)addCardInPlay
+- (Card *)putRandomCardInPlay
 {
     Card *card = [self.deck drawRandomCard];
-    [self.cards addObject:card];
+    if (card) {
+        [self.cards addObject:card];
+    }
     return card;
 }
 
@@ -131,6 +133,5 @@
     
     return pendingCards;
 }
-
 
 @end

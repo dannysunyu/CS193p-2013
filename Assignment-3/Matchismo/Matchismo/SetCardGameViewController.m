@@ -12,7 +12,7 @@
 #import "SetCardView.h"
 #import "SetCardCollectionViewCell.h"
 
-#define SET_GAME_STARTING_CARD_COUNT 12
+#define SET_GAME_STARTING_CARD_COUNT 16
 #define SET_GAME_CARD_MATCH_COUNT 3
 #define SET_GAME_FLIP_COST 1
 #define SET_GAME_MATCH_BONUS 3
