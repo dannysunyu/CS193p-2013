@@ -12,7 +12,7 @@
 #import "SetCardView.h"
 #import "SetCardCollectionViewCell.h"
 
-#define SET_GAME_STARTING_CARD_COUNT 16
+#define SET_GAME_STARTING_CARD_COUNT 12
 #define SET_GAME_CARD_MATCH_COUNT 3
 #define SET_GAME_FLIP_COST 1
 #define SET_GAME_MATCH_BONUS 3
@@ -81,6 +81,31 @@
         }
         
     }
+}
+
+- (IBAction)dealMoreCards:(UIButton *)sender
+{
+    NSMutableArray *indexPathsForInsertion = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < self.numberOfCardsToMatch; i++) {
+        Card *card = [self.game putRandomCardInPlay];
+        if (card) {
+            [indexPathsForInsertion addObject:[NSIndexPath indexPathForItem:self.game.currentlyCardCount-1 inSection:0]];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warm tip!"
+                                                            message:@"No more cards in the deck!"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Confirm"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+    
+    [self.cardCollectionView insertItemsAtIndexPaths:indexPathsForInsertion];
+    [self.cardCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.game.currentlyCardCount-1 inSection:0]
+                                atScrollPosition:UICollectionViewScrollPositionBottom
+                                        animated:YES];
+
 }
 
 @end

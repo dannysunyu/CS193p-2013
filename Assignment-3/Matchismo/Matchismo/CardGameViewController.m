@@ -15,9 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic) int flipCount;
-@property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 
-@property (strong, nonatomic) CardMatchingGame *game;
+
 @property (strong, nonatomic) GameResult *gameResult;
 
 @end
@@ -105,36 +104,11 @@
 #pragma mark - Updating the UI
 
 - (void)updateUI
-{
-    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-    NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
-    
+{    
     for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]) {
         NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
         Card *card = [self.game cardAtIndex:indexPath.item];
         [self updateCell:cell usingCard:card];
-        
-        if (self.shouldRemoveUnplayableCards) {
-            if (card.isUnplayable) {
-                [indexPaths addObject:indexPath];
-                [indexSet addIndex:indexPath.item];
-            }
-        }
-    }
-    
-    if (self.shouldRemoveUnplayableCards && [indexPaths count] > 0) {
-        [self.game removeCardsAtIndexes:indexSet];
-        [self.cardCollectionView deleteItemsAtIndexPaths:indexPaths];
-
-        NSMutableArray *indexPathsForInsertion = [[NSMutableArray alloc] init];
-        for (int i = 0; i < self.numberOfCardsToMatch; i++) {
-            Card *card = [self.game putRandomCardInPlay];
-            if (card) {
-                [indexPathsForInsertion addObject:[NSIndexPath indexPathForItem:self.game.currentlyCardCount-1 inSection:0]];
-            }
-        }
-        [self.cardCollectionView insertItemsAtIndexPaths:indexPathsForInsertion];
-        [self.cardCollectionView scrollToItemAtIndexPath:[indexPathsForInsertion lastObject] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
     }
     
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
@@ -146,6 +120,8 @@
     self.game = nil;
     self.gameResult = nil;
     self.flipCount = 0;
+    [self.cardCollectionView reloadData];
+    
     [self updateUI];
 }
 
@@ -156,10 +132,40 @@
     if (indexPath) {        
         [self.game flipCardAtIndex:indexPath.item];
         
+        if (self.shouldRemoveUnplayableCards) {
+            NSMutableIndexSet *unplayableCards = [[NSMutableIndexSet alloc] init];
+            NSMutableArray *unplayableIndexPaths = [[NSMutableArray alloc] init];
+        
+            for (int i = 0; i < self.game.currentlyCardCount; i++) {
+                Card *card = [self.game cardAtIndex:i];
+                if (card.isUnplayable) {
+                    [unplayableCards addIndex:i];
+                    [unplayableIndexPaths addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+                }
+            }
+        
+            [self.game removeCardsAtIndexes:[self unplayableCards]];
+            [self.cardCollectionView deleteItemsAtIndexPaths:unplayableIndexPaths];
+        }
+        
         self.flipCount++;
         self.gameResult.score = self.game.score;
         [self updateUI];
     }
+}
+
+- (NSIndexSet *)unplayableCards
+{
+    NSMutableIndexSet *unplayableCards = [[NSMutableIndexSet alloc] init];
+    
+    for (int i = 0; i < self.game.currentlyCardCount; i++) {
+        Card *card = [self.game cardAtIndex:i];
+        if (card.isUnplayable) {
+            [unplayableCards addIndex:i];
+        }
+    }
+    
+    return unplayableCards;
 }
 
 @end
