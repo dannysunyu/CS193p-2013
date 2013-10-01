@@ -57,10 +57,10 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="1dg-Km-lnR" firstAttribute="top" secondItem="Uxg-5K-nhl" secondAttribute="top" type="default" id="CYc-mg-BrN"/>
-                                            <constraint firstItem="1dg-Km-lnR" firstAttribute="bottom" secondItem="Uxg-5K-nhl" secondAttribute="bottom" type="default" id="NX2-Bq-qtS"/>
-                                            <constraint firstItem="1dg-Km-lnR" firstAttribute="leading" secondItem="Uxg-5K-nhl" secondAttribute="leading" type="default" id="XL0-B1-z9v"/>
-                                            <constraint firstItem="1dg-Km-lnR" firstAttribute="trailing" secondItem="Uxg-5K-nhl" secondAttribute="trailing" type="default" id="fso-ih-AdG"/>
+                                            <constraint firstItem="1dg-Km-lnR" firstAttribute="leading" secondItem="Uxg-5K-nhl" secondAttribute="leading" type="default" id="2P6-B6-uJK"/>
+                                            <constraint firstItem="1dg-Km-lnR" firstAttribute="trailing" secondItem="Uxg-5K-nhl" secondAttribute="trailing" type="default" id="DPk-vU-k6O"/>
+                                            <constraint firstItem="1dg-Km-lnR" firstAttribute="top" secondItem="Uxg-5K-nhl" secondAttribute="top" type="default" id="Xuf-lq-qF7"/>
+                                            <constraint firstItem="1dg-Km-lnR" firstAttribute="bottom" secondItem="Uxg-5K-nhl" secondAttribute="bottom" type="default" id="eQO-25-zsx"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="setCardView" destination="1dg-Km-lnR" id="iaW-oU-Ii5"/>
