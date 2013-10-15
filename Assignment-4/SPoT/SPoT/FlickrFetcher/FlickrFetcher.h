@@ -20,7 +20,7 @@
 #define FLICKR_PHOTO_PLACE_NAME @"derived_place"  // doesn't work for Stanford photos
 #define FLICKR_TAGS @"tags"
 
-#define NSLOG_FLICKR YES
+#define NSLOG_FLICKR NO
 
 typedef enum {
 	FlickrPhotoFormatSquare = 1,    // 75x75

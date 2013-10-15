@@ -1,40 +1,45 @@
 //
-//  StanfordSpotFlickrPhotoTVC.m
+//  StanfordRecentsFlickrPhotoTVC.m
 //  SPoT
 //
-//  Created by 孙 昱 on 13-10-2.
+//  Created by 孙 昱 on 13-10-13.
 //  Copyright (c) 2013年 CS193p. All rights reserved.
 //
 
-#import "StanfordSpotFlickrPhotoTVC.h"
+#import "StanfordRecentsFlickrPhotoTVC.h"
 #import "FlickrFetcher.h"
 
 #define RECENT_SPOTS_KEY @"RECENT_SPOTS_KEY"
 
-@interface StanfordSpotFlickrPhotoTVC ()
-
+@interface StanfordRecentsFlickrPhotoTVC ()
 @end
 
-@implementation StanfordSpotFlickrPhotoTVC
+@implementation StanfordRecentsFlickrPhotoTVC
+
+- (NSArray *)recentSpots
+{
+    if (!_recentSpots) _recentSpots = [[NSMutableArray alloc] init];
+    return _recentSpots;
+}
 
 - (NSString *)titleForRow:(NSUInteger)row
 {
-    NSDictionary *photo = self.spots[row];
+    NSDictionary *photo = self.recentSpots[row];
     return [photo valueForKey:FLICKR_PHOTO_TITLE];
 }
 
 - (NSString *)subtitleForRow:(NSUInteger)row
 {
-    NSDictionary *photo = self.spots[row];
+    NSDictionary *photo = self.recentSpots[row];
     return [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [super viewWillAppear:animated];
     
-    
+    self.recentSpots = [[NSUserDefaults standardUserDefaults] arrayForKey:RECENT_SPOTS_KEY];
+    [self.tableView reloadData];
 }
 
 // lets the UITableView know how many rows it should display
@@ -42,7 +47,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.spots count];
+    return [self.recentSpots count];
 }
 
 // prepares for the "Show Image" segue by seeing if the destination view controller of the segue
@@ -58,11 +63,7 @@
         if (indexPath) {
             if ([segue.identifier isEqualToString:@"Show Image"]) {
                 if ([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]) {
-                    NSDictionary *photo = self.spots[indexPath.row];
-                    
-                    // synchronize the photo
-                    [self synchronizeSpot:photo];
-                    
+                    NSDictionary *photo = self.recentSpots[indexPath.row];
                     NSURL *url = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
                     [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
                     [segue.destinationViewController setTitle:[self titleForRow:indexPath.row]];
@@ -71,25 +72,6 @@
         }
     }
     
-}
-
-- (void)synchronizeSpot:(NSDictionary *)spot
-{
-    NSMutableArray *mutableRecentSpotsFromUserDefaults = [[[NSUserDefaults standardUserDefaults]
-                                                           arrayForKey:RECENT_SPOTS_KEY] mutableCopy];
-    if (!mutableRecentSpotsFromUserDefaults) mutableRecentSpotsFromUserDefaults = [[NSMutableArray alloc] init];
-    
-    NSMutableIndexSet *removalSet = [[NSMutableIndexSet alloc] init];
-    for (NSUInteger i = 0; i < [mutableRecentSpotsFromUserDefaults count]; i++) {
-        NSDictionary *photo = [mutableRecentSpotsFromUserDefaults objectAtIndex:i];
-        if ([[photo objectForKey:FLICKR_PHOTO_ID] isEqualToString:[spot objectForKey:FLICKR_PHOTO_ID]]) {
-            [removalSet addIndex:i];
-        }
-    }
-    [mutableRecentSpotsFromUserDefaults removeObjectsAtIndexes:removalSet];
-    [mutableRecentSpotsFromUserDefaults insertObject:spot atIndex:0];
-    [[NSUserDefaults standardUserDefaults] setObject:mutableRecentSpotsFromUserDefaults forKey:RECENT_SPOTS_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3035E986180A995800994A50 /* StanfordRecentsFlickrPhotoTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3035E985180A995800994A50 /* StanfordRecentsFlickrPhotoTVC.m */; };
 		303E5C0D17FBABF2003719E2 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303E5C0C17FBABF2003719E2 /* ImageViewController.m */; };
 		303E5C1017FBB39F003719E2 /* StanfordFlickrPhotoTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 303E5C0F17FBB39F003719E2 /* StanfordFlickrPhotoTVC.m */; };
 		303E5C1317FBC2B1003719E2 /* StanfordSpotFlickrPhotoTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 303E5C1217FBC2B1003719E2 /* StanfordSpotFlickrPhotoTVC.m */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3035E984180A995800994A50 /* StanfordRecentsFlickrPhotoTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StanfordRecentsFlickrPhotoTVC.h; sourceTree = "<group>"; };
+		3035E985180A995800994A50 /* StanfordRecentsFlickrPhotoTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StanfordRecentsFlickrPhotoTVC.m; sourceTree = "<group>"; };
 		303E5C0B17FBABF2003719E2 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		303E5C0C17FBABF2003719E2 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		303E5C0E17FBB39F003719E2 /* StanfordFlickrPhotoTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StanfordFlickrPhotoTVC.h; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 				303E5C0F17FBB39F003719E2 /* StanfordFlickrPhotoTVC.m */,
 				303E5C1117FBC2B1003719E2 /* StanfordSpotFlickrPhotoTVC.h */,
 				303E5C1217FBC2B1003719E2 /* StanfordSpotFlickrPhotoTVC.m */,
+				3035E984180A995800994A50 /* StanfordRecentsFlickrPhotoTVC.h */,
+				3035E985180A995800994A50 /* StanfordRecentsFlickrPhotoTVC.m */,
 				303E5C0B17FBABF2003719E2 /* ImageViewController.h */,
 				303E5C0C17FBABF2003719E2 /* ImageViewController.m */,
 				30A3C9F117FD8CA1009CFB93 /* StanfordImageViewController.h */,
@@ -217,6 +222,7 @@
 				303E5C1017FBB39F003719E2 /* StanfordFlickrPhotoTVC.m in Sources */,
 				303E5C1317FBC2B1003719E2 /* StanfordSpotFlickrPhotoTVC.m in Sources */,
 				30A3C9F317FD8CA1009CFB93 /* StanfordImageViewController.m in Sources */,
+				3035E986180A995800994A50 /* StanfordRecentsFlickrPhotoTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
