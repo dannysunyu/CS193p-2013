@@ -25,13 +25,14 @@
 {
     [super viewWillAppear:animated];
 
-    self.photos = [[NSArray alloc] initWithContentsOfURL:[self urlForRecentsPlist]];
+    self.photos = [self recentsCache];
 }
 
-- (NSURL *)urlForRecentsPlist
+- (NSArray *)recentsCache
 {
-    NSURL *documentURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    return [documentURL URLByAppendingPathComponent:@"recents.plist"];
+    NSURL *urlForDocumentDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *urlForRecentsPlist = [urlForDocumentDirectory URLByAppendingPathComponent:@"recents_cache.plist"];
+    return [[NSArray alloc] initWithContentsOfURL:urlForRecentsPlist];
 }
 
 @end

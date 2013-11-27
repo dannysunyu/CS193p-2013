@@ -31,8 +31,9 @@
 
 - (void)cacheRecentPhoto:(NSDictionary *)photo
 {
-    NSURL *recentsURL = [self urlForRecentsPlist];
-    NSMutableArray *recentsCache = [[NSMutableArray alloc] initWithContentsOfURL:recentsURL];
+    NSURL *urlForDocumentDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *urlForRecentsPlist = [urlForDocumentDirectory URLByAppendingPathComponent:@"recents_cache.plist"];
+    NSMutableArray *recentsCache = [[NSMutableArray alloc] initWithContentsOfURL:urlForRecentsPlist];
     if (!recentsCache) {
         recentsCache = [[NSMutableArray alloc] init];
     }
@@ -43,14 +44,7 @@
     } else {
         [recentsCache addObject:photo];
     }
-    [recentsCache writeToURL:recentsURL atomically:NO];
+    [recentsCache writeToURL:urlForRecentsPlist atomically:NO];
 }
-
-- (NSURL *)urlForRecentsPlist
-{
-    NSURL *documentURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    return [documentURL URLByAppendingPathComponent:@"recents.plist"];
-}
-
 
 @end
