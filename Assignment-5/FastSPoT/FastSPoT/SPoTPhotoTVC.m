@@ -40,10 +40,8 @@
     
     if ([recentsCache containsObject:photo]) {
         [recentsCache removeObject:photo];
-        [recentsCache insertObject:photo atIndex:0];
-    } else {
-        [recentsCache addObject:photo];
     }
+    [recentsCache insertObject:photo atIndex:0];
     [recentsCache writeToURL:urlForRecentsPlist atomically:NO];
 }
 

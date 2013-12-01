@@ -24,6 +24,7 @@
 		30EB326F18420EF2001B1F16 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EB326E18420EF2001B1F16 /* iPad.storyboard */; };
 		30EB327218420F18001B1F16 /* SPoTPhotoTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 30EB327118420F18001B1F16 /* SPoTPhotoTVC.m */; };
 		30EB327518420F2E001B1F16 /* SPoTRecentsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 30EB327418420F2E001B1F16 /* SPoTRecentsTVC.m */; };
+		30F46F091849F07400CEE3D9 /* FlickrCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F46F081849F07400CEE3D9 /* FlickrCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		30EB327118420F18001B1F16 /* SPoTPhotoTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPoTPhotoTVC.m; sourceTree = "<group>"; };
 		30EB327318420F2E001B1F16 /* SPoTRecentsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPoTRecentsTVC.h; sourceTree = "<group>"; };
 		30EB327418420F2E001B1F16 /* SPoTRecentsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPoTRecentsTVC.m; sourceTree = "<group>"; };
+		30F46F071849F07400CEE3D9 /* FlickrCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrCache.h; sourceTree = "<group>"; };
+		30F46F081849F07400CEE3D9 /* FlickrCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,8 @@
 				30EB327418420F2E001B1F16 /* SPoTRecentsTVC.m */,
 				30A206A0184227B100BFCE57 /* ImageViewController.h */,
 				30A206A1184227B100BFCE57 /* ImageViewController.m */,
+				30F46F071849F07400CEE3D9 /* FlickrCache.h */,
+				30F46F081849F07400CEE3D9 /* FlickrCache.m */,
 				30EB326218420B16001B1F16 /* FlickrFetcher */,
 				30EB324918420AE1001B1F16 /* Supporting Files */,
 			);
@@ -221,6 +226,7 @@
 				30EB327218420F18001B1F16 /* SPoTPhotoTVC.m in Sources */,
 				30EB327518420F2E001B1F16 /* SPoTRecentsTVC.m in Sources */,
 				30A206A2184227B100BFCE57 /* ImageViewController.m in Sources */,
+				30F46F091849F07400CEE3D9 /* FlickrCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -69,7 +69,6 @@
             }
         }
     }
-//    [result ]
     return result;
 }
 
