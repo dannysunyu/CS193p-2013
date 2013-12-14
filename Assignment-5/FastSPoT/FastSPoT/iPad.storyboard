@@ -205,7 +205,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="mCi-20-Y6b" kind="replace" splitViewControllerTargetIndex="1" id="tgs-bd-vpu"/>
+                                    <segue destination="mCi-20-Y6b" kind="replace" identifier="Show Image" splitViewControllerTargetIndex="1" id="tgs-bd-vpu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -255,6 +255,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="tgs-bd-vpu"/>
+        <segue reference="zyF-2L-u7o"/>
     </inferredMetricsTieBreakers>
 </document>
