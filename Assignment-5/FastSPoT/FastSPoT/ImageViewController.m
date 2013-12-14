@@ -39,9 +39,12 @@
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
         
-        [self.spinner startAnimating];
-        
         NSURL *imageURL = self.imageURL;    // grab the URL before we start (then check it below)
+        if (!imageURL) {
+            return;
+        }
+        
+        [self.spinner startAnimating];
         
         dispatch_queue_t imageFetchQ = dispatch_queue_create("image fetcher", NULL);
         dispatch_async(imageFetchQ, ^{
@@ -105,61 +108,6 @@
     self.scrollView.maximumZoomScale = 5.0;
     self.scrollView.delegate = self;
     [self resetImage];
-}
-
-// get the image specified by the url, either in cache or from network
-- (NSData *)cachedImageDataForURL:(NSURL *)url
-{
-    NSData *imageData = nil;
-    self.filePaths = [self cacheForFilePaths];
-    
-    if (!self.filePaths[url]) {
-//        imageData = [[NSData alloc] initWithContentsOfURL:url];
-        NSURL *filePath = [self filePathForURL:url];
-//        [imageData writeToURL:filePath atomically:NO];
-        NSLog(@"Not hit");
-        self.filePaths[url] = filePath;
-        [self cacheFilePathForURL: url];
-        NSLog(@"count: %d", [self.filePaths count]);
-    } else {
-        NSLog(@"Hit, url: %@", url);
-        NSURL *filePath = [self.filePaths objectForKey:url];
-        imageData = [[NSData alloc] initWithContentsOfURL:filePath];
-    }
-    return imageData;
-}
-
-- (void)cacheImageData:(NSData *)imageData forURL:(NSURL *)url
-{
-    if (![self.filePaths objectForKey:url]) {
-        [imageData writeToURL:[self filePathForURL:url] atomically:NO];
-    }
-}
-
-- (NSURL *)filePathForURL:(NSURL *)url
-{
-    NSURL *urlForDocumentDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    return [urlForDocumentDirectory URLByAppendingPathComponent:[url lastPathComponent]];
-}
-
-- (NSMutableDictionary *)cacheForFilePaths
-{
-    NSURL *urlForDocumentDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSURL *urlPlistFilePaths = [urlForDocumentDirectory URLByAppendingPathComponent:@"file_paths_cache.plist"];
-    NSMutableDictionary *filePathDictionary = [[NSMutableDictionary alloc] initWithContentsOfURL:urlPlistFilePaths];
-    if (!filePathDictionary) {
-        filePathDictionary = [[NSMutableDictionary alloc] init];
-    }
-    return filePathDictionary;
-}
-
-- (void)cacheFilePathForURL:(NSURL *)url
-{
-    self.filePaths = [self cacheForFilePaths];
-    self.filePaths[url] = [self filePathForURL:url];
-    NSURL *urlForDocumentDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSURL *urlPlistFilePath = [urlForDocumentDirectory URLByAppendingPathComponent:@"file_paths_cache.plist"];
-    [self.filePaths writeToURL:urlPlistFilePath atomically:NO];
 }
 
 @end

@@ -9,6 +9,9 @@
 #import "FlickrPhotoTVC.h"
 #import "FlickrFetcher.h"
 
+@interface FlickrPhotoTVC() <UISplitViewControllerDelegate>
+@end
+
 @implementation FlickrPhotoTVC
 
 // sets the Model
@@ -87,5 +90,20 @@
     
     return cell;
 }
+
+#pragma mark - UISplitViewControllerDelegate
+
+- (void)awakeFromNib
+{
+    self.splitViewController.delegate = self;
+}
+
+- (BOOL)splitViewController:(UISplitViewController *)svc
+   shouldHideViewController:(UIViewController *)vc
+              inOrientation:(UIInterfaceOrientation)orientation
+{
+    return NO;
+}
+
 
 @end

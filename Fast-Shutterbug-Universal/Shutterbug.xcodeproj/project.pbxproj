@@ -101,8 +101,8 @@
 		EC57763616C1E2A600CB4807 /* Shutterbug */ = {
 			isa = PBXGroup;
 			children = (
-				ECE860BB16C4837E005F7CD4 /* iPad.storyboard */,
 				EC57764816C1E2A600CB4807 /* iPhone.storyboard */,
+				ECE860BB16C4837E005F7CD4 /* iPad.storyboard */,
 				EC57765316C1E2E500CB4807 /* ImageViewController.h */,
 				EC57765416C1E2E500CB4807 /* ImageViewController.m */,
 				EC57765616C1E4F600CB4807 /* HawaiiImageViewController.h */,
@@ -307,7 +307,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shutterbug/Shutterbug-Prefix.pch";
 				INFOPLIST_FILE = "Shutterbug/Shutterbug-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -320,7 +320,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shutterbug/Shutterbug-Prefix.pch";
 				INFOPLIST_FILE = "Shutterbug/Shutterbug-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
