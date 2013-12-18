@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3017E4E51861EE8500C46EAF /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3017E4E41861EE8500C46EAF /* Photo.m */; };
+		3017E4E81861EE8600C46EAF /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3017E4E71861EE8600C46EAF /* Spot.m */; };
 		30898503185F49EF00C50C6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30898502185F49EF00C50C6E /* Foundation.framework */; };
 		30898505185F49EF00C50C6E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30898504185F49EF00C50C6E /* CoreGraphics.framework */; };
 		30898507185F49EF00C50C6E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30898506185F49EF00C50C6E /* UIKit.framework */; };
@@ -19,6 +21,10 @@
 		3089851E185F49EF00C50C6E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30898506185F49EF00C50C6E /* UIKit.framework */; };
 		30898526185F49EF00C50C6E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30898524185F49EF00C50C6E /* InfoPlist.strings */; };
 		30898528185F49EF00C50C6E /* CoreDataSPoTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30898527185F49EF00C50C6E /* CoreDataSPoTTests.m */; };
+		30898532185F4AF800C50C6E /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30898531185F4AF800C50C6E /* iPhone.storyboard */; };
+		30898534185F4B4600C50C6E /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30898533185F4B4600C50C6E /* iPad.storyboard */; };
+		30898539185F4B8E00C50C6E /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 30898538185F4B8E00C50C6E /* FlickrFetcher.m */; };
+		3089853C185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3089853A185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3017E4E31861EE8500C46EAF /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		3017E4E41861EE8500C46EAF /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		3017E4E61861EE8600C46EAF /* Spot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spot.h; sourceTree = "<group>"; };
+		3017E4E71861EE8600C46EAF /* Spot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spot.m; sourceTree = "<group>"; };
 		308984FF185F49EF00C50C6E /* CoreDataSPoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataSPoT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30898502185F49EF00C50C6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		30898504185F49EF00C50C6E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +58,12 @@
 		30898523185F49EF00C50C6E /* CoreDataSPoTTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoreDataSPoTTests-Info.plist"; sourceTree = "<group>"; };
 		30898525185F49EF00C50C6E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30898527185F49EF00C50C6E /* CoreDataSPoTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataSPoTTests.m; sourceTree = "<group>"; };
+		30898531185F4AF800C50C6E /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
+		30898533185F4B4600C50C6E /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
+		30898536185F4B8E00C50C6E /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
+		30898537185F4B8E00C50C6E /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
+		30898538185F4B8E00C50C6E /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
+		3089853B185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataSPoT-Prefix.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +90,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3017E4DC1861ECB700C46EAF /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				3089853A185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodeld */,
+				3017E4E61861EE8600C46EAF /* Spot.h */,
+				3017E4E71861EE8600C46EAF /* Spot.m */,
+				3017E4E31861EE8500C46EAF /* Photo.h */,
+				3017E4E41861EE8500C46EAF /* Photo.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		308984F6185F49EE00C50C6E = {
 			isa = PBXGroup;
 			children = (
@@ -107,9 +135,13 @@
 		30898508185F49EF00C50C6E /* CoreDataSPoT */ = {
 			isa = PBXGroup;
 			children = (
+				30898531185F4AF800C50C6E /* iPhone.storyboard */,
+				30898533185F4B4600C50C6E /* iPad.storyboard */,
 				30898511185F49EF00C50C6E /* AppDelegate.h */,
 				30898512185F49EF00C50C6E /* AppDelegate.m */,
 				30898514185F49EF00C50C6E /* Images.xcassets */,
+				3017E4DC1861ECB700C46EAF /* Core Data */,
+				30898535185F4B8E00C50C6E /* FlickrFetcher */,
 				30898509185F49EF00C50C6E /* Supporting Files */,
 			);
 			path = CoreDataSPoT;
@@ -142,6 +174,16 @@
 				30898524185F49EF00C50C6E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		30898535185F4B8E00C50C6E /* FlickrFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				30898536185F4B8E00C50C6E /* FlickrAPIKey.h */,
+				30898537185F4B8E00C50C6E /* FlickrFetcher.h */,
+				30898538185F4B8E00C50C6E /* FlickrFetcher.m */,
+			);
+			path = FlickrFetcher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +261,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30898534185F4B4600C50C6E /* iPad.storyboard in Resources */,
 				3089850D185F49EF00C50C6E /* InfoPlist.strings in Resources */,
+				30898532185F4AF800C50C6E /* iPhone.storyboard in Resources */,
 				30898515185F49EF00C50C6E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,8 +283,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3017E4E51861EE8500C46EAF /* Photo.m in Sources */,
+				3089853C185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodeld in Sources */,
 				30898513185F49EF00C50C6E /* AppDelegate.m in Sources */,
+				30898539185F4B8E00C50C6E /* FlickrFetcher.m in Sources */,
 				3089850F185F49EF00C50C6E /* main.m in Sources */,
+				3017E4E81861EE8600C46EAF /* Spot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +493,7 @@
 				3089852D185F49EF00C50C6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3089852E185F49EF00C50C6E /* Build configuration list for PBXNativeTarget "CoreDataSPoTTests" */ = {
 			isa = XCConfigurationList;
@@ -453,8 +502,22 @@
 				30898530185F49EF00C50C6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3089853A185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3089853B185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodel */,
+			);
+			currentVersion = 3089853B185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodel */;
+			path = "CoreDataSPoT-Prefix.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 308984F7185F49EE00C50C6E /* Project object */;
 }
