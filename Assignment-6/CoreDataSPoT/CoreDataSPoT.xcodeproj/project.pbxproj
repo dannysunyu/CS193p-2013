@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3017E4E51861EE8500C46EAF /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3017E4E41861EE8500C46EAF /* Photo.m */; };
-		3017E4E81861EE8600C46EAF /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3017E4E71861EE8600C46EAF /* Spot.m */; };
 		30898503185F49EF00C50C6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30898502185F49EF00C50C6E /* Foundation.framework */; };
 		30898505185F49EF00C50C6E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30898504185F49EF00C50C6E /* CoreGraphics.framework */; };
 		30898507185F49EF00C50C6E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30898506185F49EF00C50C6E /* UIKit.framework */; };
@@ -25,6 +23,13 @@
 		30898534185F4B4600C50C6E /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30898533185F4B4600C50C6E /* iPad.storyboard */; };
 		30898539185F4B8E00C50C6E /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 30898538185F4B8E00C50C6E /* FlickrFetcher.m */; };
 		3089853C185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3089853A185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodeld */; };
+		30F188C418628B8E00DB1E64 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F188C318628B8E00DB1E64 /* CoreDataTableViewController.m */; };
+		30F188C718628C1F00DB1E64 /* SpotCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F188C618628C1F00DB1E64 /* SpotCDTVC.m */; };
+		30F188CA18628C8500DB1E64 /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F188C918628C8500DB1E64 /* Spot.m */; };
+		30F188CD18628C8600DB1E64 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F188CC18628C8600DB1E64 /* Photo.m */; };
+		30F188D018628E8900DB1E64 /* Photo+Flickr.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F188CF18628E8900DB1E64 /* Photo+Flickr.m */; };
+		30F188D3186293C400DB1E64 /* Spot+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F188D2186293C400DB1E64 /* Spot+Create.m */; };
+		30F188D81862C86900DB1E64 /* PhotosBySpotCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F188D71862C86900DB1E64 /* PhotosBySpotCDTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,10 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3017E4E31861EE8500C46EAF /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		3017E4E41861EE8500C46EAF /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
-		3017E4E61861EE8600C46EAF /* Spot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spot.h; sourceTree = "<group>"; };
-		3017E4E71861EE8600C46EAF /* Spot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spot.m; sourceTree = "<group>"; };
 		308984FF185F49EF00C50C6E /* CoreDataSPoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataSPoT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30898502185F49EF00C50C6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		30898504185F49EF00C50C6E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,6 +65,20 @@
 		30898537185F4B8E00C50C6E /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		30898538185F4B8E00C50C6E /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		3089853B185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataSPoT-Prefix.xcdatamodel"; sourceTree = "<group>"; };
+		30F188C218628B8E00DB1E64 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		30F188C318628B8E00DB1E64 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		30F188C518628C1F00DB1E64 /* SpotCDTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotCDTVC.h; sourceTree = "<group>"; };
+		30F188C618628C1F00DB1E64 /* SpotCDTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotCDTVC.m; sourceTree = "<group>"; };
+		30F188C818628C8500DB1E64 /* Spot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spot.h; sourceTree = "<group>"; };
+		30F188C918628C8500DB1E64 /* Spot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spot.m; sourceTree = "<group>"; };
+		30F188CB18628C8600DB1E64 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		30F188CC18628C8600DB1E64 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		30F188CE18628E8900DB1E64 /* Photo+Flickr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Photo+Flickr.h"; sourceTree = "<group>"; };
+		30F188CF18628E8900DB1E64 /* Photo+Flickr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photo+Flickr.m"; sourceTree = "<group>"; };
+		30F188D1186293C400DB1E64 /* Spot+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spot+Create.h"; sourceTree = "<group>"; };
+		30F188D2186293C400DB1E64 /* Spot+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Spot+Create.m"; sourceTree = "<group>"; };
+		30F188D61862C86900DB1E64 /* PhotosBySpotCDTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosBySpotCDTVC.h; sourceTree = "<group>"; };
+		30F188D71862C86900DB1E64 /* PhotosBySpotCDTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosBySpotCDTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,11 +108,15 @@
 		3017E4DC1861ECB700C46EAF /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				30F188C818628C8500DB1E64 /* Spot.h */,
+				30F188C918628C8500DB1E64 /* Spot.m */,
+				30F188D1186293C400DB1E64 /* Spot+Create.h */,
+				30F188D2186293C400DB1E64 /* Spot+Create.m */,
+				30F188CB18628C8600DB1E64 /* Photo.h */,
+				30F188CC18628C8600DB1E64 /* Photo.m */,
+				30F188CE18628E8900DB1E64 /* Photo+Flickr.h */,
+				30F188CF18628E8900DB1E64 /* Photo+Flickr.m */,
 				3089853A185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodeld */,
-				3017E4E61861EE8600C46EAF /* Spot.h */,
-				3017E4E71861EE8600C46EAF /* Spot.m */,
-				3017E4E31861EE8500C46EAF /* Photo.h */,
-				3017E4E41861EE8500C46EAF /* Photo.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -137,8 +156,12 @@
 			children = (
 				30898531185F4AF800C50C6E /* iPhone.storyboard */,
 				30898533185F4B4600C50C6E /* iPad.storyboard */,
-				30898511185F49EF00C50C6E /* AppDelegate.h */,
-				30898512185F49EF00C50C6E /* AppDelegate.m */,
+				30F188C218628B8E00DB1E64 /* CoreDataTableViewController.h */,
+				30F188C318628B8E00DB1E64 /* CoreDataTableViewController.m */,
+				30F188C518628C1F00DB1E64 /* SpotCDTVC.h */,
+				30F188C618628C1F00DB1E64 /* SpotCDTVC.m */,
+				30F188D61862C86900DB1E64 /* PhotosBySpotCDTVC.h */,
+				30F188D71862C86900DB1E64 /* PhotosBySpotCDTVC.m */,
 				30898514185F49EF00C50C6E /* Images.xcassets */,
 				3017E4DC1861ECB700C46EAF /* Core Data */,
 				30898535185F4B8E00C50C6E /* FlickrFetcher */,
@@ -150,6 +173,8 @@
 		30898509185F49EF00C50C6E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				30898511185F49EF00C50C6E /* AppDelegate.h */,
+				30898512185F49EF00C50C6E /* AppDelegate.m */,
 				3089850A185F49EF00C50C6E /* CoreDataSPoT-Info.plist */,
 				3089850B185F49EF00C50C6E /* InfoPlist.strings */,
 				3089850E185F49EF00C50C6E /* main.m */,
@@ -283,12 +308,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3017E4E51861EE8500C46EAF /* Photo.m in Sources */,
+				30F188C718628C1F00DB1E64 /* SpotCDTVC.m in Sources */,
 				3089853C185F4BC100C50C6E /* CoreDataSPoT-Prefix.xcdatamodeld in Sources */,
+				30F188C418628B8E00DB1E64 /* CoreDataTableViewController.m in Sources */,
 				30898513185F49EF00C50C6E /* AppDelegate.m in Sources */,
+				30F188CD18628C8600DB1E64 /* Photo.m in Sources */,
 				30898539185F4B8E00C50C6E /* FlickrFetcher.m in Sources */,
+				30F188D018628E8900DB1E64 /* Photo+Flickr.m in Sources */,
+				30F188D3186293C400DB1E64 /* Spot+Create.m in Sources */,
 				3089850F185F49EF00C50C6E /* main.m in Sources */,
-				3017E4E81861EE8600C46EAF /* Spot.m in Sources */,
+				30F188D81862C86900DB1E64 /* PhotosBySpotCDTVC.m in Sources */,
+				30F188CA18628C8500DB1E64 /* Spot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,14 +5,14 @@
         <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unique" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="locatedAt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Spot" inverseName="photos" inverseEntity="Spot" syncable="YES"/>
+        <relationship name="takenAt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Spot" inverseName="photos" inverseEntity="Spot" syncable="YES"/>
     </entity>
     <entity name="Spot" representedClassName="Spot" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="locatedAt" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="takenAt" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Spot" positionX="160" positionY="192" width="128" height="73"/>
-        <element name="Photo" positionX="-72" positionY="63" width="128" height="118"/>
+        <element name="Photo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Spot" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
