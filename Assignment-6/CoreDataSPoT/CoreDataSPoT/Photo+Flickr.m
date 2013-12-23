@@ -38,6 +38,7 @@
         photo.title = [photoDictionary[FLICKR_PHOTO_TITLE] description];
         photo.subtitle = [[photoDictionary valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
         photo.imageURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatLarge] absoluteString];
+        photo.thumbnailURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatSquare] absoluteString];
         NSString *spotName = [Photo spotNameForFlickrPhoto:photoDictionary];
         Spot *spot = [Spot spotWithName:spotName inManagedObjectContext:context];
         photo.takenAt = spot;

@@ -9,7 +9,7 @@
 #import "StanfordSpotCDTVC.h"
 #import "FlickrFetcher.h"
 #import "Photo+Flickr.h"
-
+#import "SPoTAppDelegate.h"
 
 @implementation StanfordSpotCDTVC
 
@@ -18,7 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.debug = YES;
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -26,7 +26,6 @@
     [super viewWillAppear:animated];
     
     if (!self.managedObjectContext) [self useSPoTDocument];
-    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
 }
 
 
@@ -34,25 +33,26 @@
 //
 - (void)useSPoTDocument
 {
-    NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    url = [url URLByAppendingPathComponent:@"SPoT"];
-    UIManagedDocument *document = [[UIManagedDocument alloc] initWithFileURL:url];
+    SPoTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    if (!appDelegate.managedDocument) {
+        appDelegate.managedDocument = [[UIManagedDocument alloc] initWithFileURL:appDelegate.managedDocumentURL];
+    }
     
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[url path]]) {
-        [document saveToURL:url forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[appDelegate.managedDocumentURL path]]) {
+        [appDelegate.managedDocument saveToURL:appDelegate.managedDocumentURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
             if (success) {
-                self.managedObjectContext = document.managedObjectContext;
+                self.managedObjectContext = appDelegate.managedDocument.managedObjectContext;
                 [self refresh];
             }
         }];
-    } else if (document.documentState == UIDocumentStateClosed) {
-        [document openWithCompletionHandler:^(BOOL success) {
+    } else if (appDelegate.managedDocument.documentState == UIDocumentStateClosed) {
+        [appDelegate.managedDocument openWithCompletionHandler:^(BOOL success) {
             if (success) {
-                self.managedObjectContext = document.managedObjectContext;
+                self.managedObjectContext = appDelegate.managedDocument.managedObjectContext;
             }
         }];
     } else {
-        self.managedObjectContext = document.managedObjectContext;
+        self.managedObjectContext = appDelegate.managedDocument.managedObjectContext;
     }
 }
 
@@ -64,8 +64,6 @@
 {
     NSLog(@"refresh");
     [self.refreshControl beginRefreshing];
-    [self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
-
     
     dispatch_queue_t fetchQ = dispatch_queue_create("Flickr Fetch", NULL);
     dispatch_async(fetchQ, ^{

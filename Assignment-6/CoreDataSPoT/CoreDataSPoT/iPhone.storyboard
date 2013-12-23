@@ -104,7 +104,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ru5-b8-yeE" kind="push" identifier="setImageURL:" id="NB9-ue-y8t"/>
+                                    <segue destination="ru5-b8-yeE" kind="push" identifier="setImageURL:" id="Wy1-rT-CSz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -131,16 +131,20 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-z6-HiU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </scrollView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ur2-xw-U7Q">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ur2-xw-U7Q">
                                 <rect key="frame" x="150" y="174" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-z6-HiU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="377"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="ur2-xw-U7Q" secondAttribute="centerY" id="M0n-72-W1c"/>
+                            <constraint firstAttribute="centerX" secondItem="ur2-xw-U7Q" secondAttribute="centerX" id="M3Y-dg-pug"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hlJ-Qt-nKp"/>
                     <connections>
@@ -150,12 +154,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4s-Id-Rvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2395" y="550"/>
+            <point key="canvasLocation" x="2313" y="74"/>
         </scene>
-        <!--Table View Controller - Recents-->
+        <!--Recent PhotosCDTVC - Recents-->
         <scene sceneID="aJv-yH-kFf">
             <objects>
-                <tableViewController id="K5I-Ii-hNQ" sceneMemberID="viewController">
+                <tableViewController id="K5I-Ii-hNQ" customClass="RecentPhotosCDTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vTN-eN-F8h">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,7 +189,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ru5-b8-yeE" kind="push" id="bQJ-mo-gAZ"/>
+                                    <segue destination="ru5-b8-yeE" kind="push" identifier="setImageURL:" id="wCW-HL-IjO"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -235,6 +239,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="NB9-ue-y8t"/>
+        <segue reference="wCW-HL-IjO"/>
     </inferredMetricsTieBreakers>
 </document>

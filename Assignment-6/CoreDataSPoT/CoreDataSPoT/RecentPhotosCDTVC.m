@@ -7,32 +7,80 @@
 //
 
 #import "RecentPhotosCDTVC.h"
-
-@interface RecentPhotosCDTVC ()
-
-@end
+#import "Photo.h"
+#import "SPoTAppDelegate.h"
 
 @implementation RecentPhotosCDTVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)viewWillAppear:(BOOL)animated
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    [super viewWillAppear:animated];
+    
+    if (!self.managedObjectContext) [self useSPoTDocument];
+}
+
+// The model for this class.
+//
+// When it gets set, we create an NSFetchRequest to get all Spots in the database associated with it.
+// Then we hook that NSFetchRequest up to the table view using an NSFetchedResultController.
+- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+    _managedObjectContext = managedObjectContext;
+    if (managedObjectContext) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"lastViewed" ascending:NO selector:@selector(compare:)]];
+        request.predicate =
+        [NSPredicate predicateWithFormat:@"lastViewed != nil"]; // all recent photos (with lastViewed attribute not being nil)
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                            managedObjectContext:managedObjectContext
+                                                                              sectionNameKeyPath:nil
+                                                                                       cacheName:nil];
+    } else {
+        self.fetchedResultsController = nil;
     }
-    return self;
 }
 
-- (void)viewDidLoad
+// Either creates, opens or just uses the SPoT document
+//
+- (void)useSPoTDocument
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    SPoTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    if (!appDelegate.managedDocument) {
+        appDelegate.managedDocument = [[UIManagedDocument alloc] initWithFileURL:appDelegate.managedDocumentURL];
+    }
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[appDelegate.managedDocumentURL path]]) {
+        [appDelegate.managedDocument saveToURL:appDelegate.managedDocumentURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+            if (success) {
+                self.managedObjectContext = appDelegate.managedDocument.managedObjectContext;
+            }
+        }];
+    } else if (appDelegate.managedDocument.documentState == UIDocumentStateClosed) {
+        [appDelegate.managedDocument openWithCompletionHandler:^(BOOL success) {
+            if (success) {
+                self.managedObjectContext = appDelegate.managedDocument.managedObjectContext;
+            }
+        }];
+    } else {
+        self.managedObjectContext = appDelegate.managedDocument.managedObjectContext;
+    }
 }
 
-- (void)didReceiveMemoryWarning
+
+#pragma mark - UITableViewDataSource
+
+// Loads up the cell for a given row by getting the associated Photo from our NSFetchedResultsController.
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Photo"];
+    
+    Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    cell.textLabel.text = photo.title;
+    cell.detailTextLabel.text = photo.subtitle;
+    
+    return cell;
 }
 
 @end

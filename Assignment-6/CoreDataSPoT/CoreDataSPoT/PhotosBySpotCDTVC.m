@@ -45,6 +45,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Photo"];
     
     Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSLog(@"lastViewed: %@", photo.lastViewed);
     
     cell.textLabel.text = photo.title;
     cell.detailTextLabel.text = photo.subtitle;
@@ -69,6 +70,9 @@
                 NSURL *url = [NSURL URLWithString:photo.imageURL];
                 [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
                 [segue.destinationViewController setTitle:photo.title];
+                
+                // records the date when this photo is viewed by user
+                photo.lastViewed = [NSDate date];
             }
         }
     }

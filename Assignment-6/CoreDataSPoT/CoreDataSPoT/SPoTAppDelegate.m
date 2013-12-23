@@ -6,9 +6,24 @@
 //  Copyright (c) 2013年 CS193p. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "SPoTAppDelegate.h"
 
-@implementation AppDelegate
+@implementation SPoTAppDelegate
+
+- (void)setManagedDocument:(UIManagedDocument *)document
+{
+    _managedDocument = document;
+}
+
+- (NSURL *)managedDocumentURL
+{
+    if (!_managedDocumentURL) {
+        _managedDocumentURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        _managedDocumentURL = [_managedDocumentURL URLByAppendingPathComponent:@"SPoT"];
+    }
+    
+    return _managedDocumentURL;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

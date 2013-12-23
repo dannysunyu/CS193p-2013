@@ -8,7 +8,7 @@
 
 #import "SpotCDTVC.h"
 #import "Spot.h"
-
+#import "PhotosBySpotCDTVC.h"
 
 @implementation SpotCDTVC
 
@@ -42,8 +42,8 @@
     
     Spot *spot = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = spot.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d photos", [spot.photos count]];
-    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu photos", (unsigned long)[spot.photos count]];
+
     return cell;
 }
 

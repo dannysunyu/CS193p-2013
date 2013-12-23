@@ -63,7 +63,6 @@
         NSURL *imageURL = self.imageURL;    // grab the URL before we start (then check it below)
         dispatch_queue_t imageFetchQ = dispatch_queue_create("image fetcher", NULL);
         dispatch_async(imageFetchQ, ^{
-            [NSThread sleepForTimeInterval:2.0]; // simulate network latency for testing
             // really we should probably keep a count of threads claiming network activity
             [UIApplication sharedApplication].networkActivityIndicatorVisible = YES; // bad
             NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];  // could take a while

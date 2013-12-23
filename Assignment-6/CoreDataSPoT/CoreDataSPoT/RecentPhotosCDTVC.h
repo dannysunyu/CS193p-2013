@@ -10,4 +10,8 @@
 
 @interface RecentPhotosCDTVC : CoreDataTableViewController
 
+// The Model for this class
+// Essentially specifies the database to look in to find all recent photos to display in this table
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 @end
