@@ -83,4 +83,29 @@
     return cell;
 }
 
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = nil;
+    
+    if ([sender isKindOfClass:[UITableViewCell class]]) {
+        indexPath = [self.tableView indexPathForCell:sender];
+    }
+    
+    if (indexPath) {
+        if ([segue.identifier isEqualToString:@"setImageURL:"]) {
+            Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            if ([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]) {
+                NSURL *url = [NSURL URLWithString:photo.imageURL];
+                [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
+                [segue.destinationViewController setTitle:photo.title];
+                
+                // records the date when this photo is viewed by user
+                photo.lastViewed = [NSDate date];
+            }
+        }
+    }
+}
+
 @end

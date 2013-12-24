@@ -135,15 +135,19 @@
                                 <rect key="frame" x="150" y="174" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-z6-HiU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="377"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-z6-HiU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TSD-z6-HiU" firstAttribute="leading" secondItem="A6I-74-cg9" secondAttribute="leading" id="93X-W7-1n6"/>
                             <constraint firstAttribute="centerY" secondItem="ur2-xw-U7Q" secondAttribute="centerY" id="M0n-72-W1c"/>
                             <constraint firstAttribute="centerX" secondItem="ur2-xw-U7Q" secondAttribute="centerX" id="M3Y-dg-pug"/>
+                            <constraint firstAttribute="trailing" secondItem="TSD-z6-HiU" secondAttribute="trailing" id="UAe-X9-sec"/>
+                            <constraint firstAttribute="bottom" secondItem="TSD-z6-HiU" secondAttribute="bottom" id="ctm-RS-TIp"/>
+                            <constraint firstItem="TSD-z6-HiU" firstAttribute="top" secondItem="A6I-74-cg9" secondAttribute="top" id="lC7-aI-rOz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hlJ-Qt-nKp"/>
@@ -154,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4s-Id-Rvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2313" y="74"/>
+            <point key="canvasLocation" x="2385" y="561"/>
         </scene>
         <!--Recent PhotosCDTVC - Recents-->
         <scene sceneID="aJv-yH-kFf">

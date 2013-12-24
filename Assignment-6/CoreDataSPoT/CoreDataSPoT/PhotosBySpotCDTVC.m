@@ -45,7 +45,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Photo"];
     
     Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSLog(@"lastViewed: %@", photo.lastViewed);
     
     cell.textLabel.text = photo.title;
     cell.detailTextLabel.text = photo.subtitle;

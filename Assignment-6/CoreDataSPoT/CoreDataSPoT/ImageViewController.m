@@ -7,6 +7,7 @@
 //
 
 #import "ImageViewController.h"
+#import "FlickrCache.h"
 //#import "AttributedStringViewController.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
@@ -19,14 +20,14 @@
 
 @implementation ImageViewController
 
-//- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-//{
-//    if ([identifier isEqualToString:@"Show URL"]) {
-//        return (self.imageURL && !self.urlPopover.popoverVisible) ? YES : NO;
-//    } else {
-//        return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
-//    }
-//}
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"Show URL"]) {
+        return (self.imageURL && !self.urlPopover.popoverVisible) ? YES : NO;
+    } else {
+        return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
+    }
+}
 
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 //{
@@ -59,17 +60,26 @@
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
         
-        [self.spinner startAnimating];      // if self.spinner is nil, does nothing
         NSURL *imageURL = self.imageURL;    // grab the URL before we start (then check it below)
+        if (!imageURL) return;
+        
+        [self.spinner startAnimating];      // if self.spinner is nil, does nothing
+        
         dispatch_queue_t imageFetchQ = dispatch_queue_create("image fetcher", NULL);
         dispatch_async(imageFetchQ, ^{
-            // really we should probably keep a count of threads claiming network activity
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES; // bad
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];  // could take a while
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO; // bad
-            // UIImage is one of the few UIKit objects which is thread-safe, so we can do this here
+            NSData *imageData = nil;
+            NSURL *fileURL = [FlickrCache cachedFileURLforURL:self.imageURL];
+            if (fileURL) {
+                imageData = [[NSData alloc] initWithContentsOfURL:fileURL];
+            } else {
+                // really we should probably keep a count of threads claiming network activity
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;    // bad
+                imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            }
+            [FlickrCache cacheData:imageData forURL:self.imageURL];
+            
             UIImage *image = [[UIImage alloc] initWithData:imageData];
-            // check to make sure we are even still interested in this image (might have touched away)
             if (self.imageURL == imageURL) {
                 // dispatch back to main queue to do UIKit work
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -79,7 +89,8 @@
                         self.imageView.image = image;
                         self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
                     }
-                    [self.spinner stopAnimating];  // spinner should have hidesWhenStopped set
+                    
+                    [self.spinner stopAnimating];
                 });
             }
         });
