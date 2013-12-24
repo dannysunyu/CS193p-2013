@@ -18,6 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.refreshControl beginRefreshing];  // <-- added this
+
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
 }
 
@@ -50,9 +52,11 @@
             if (success) {
                 self.managedObjectContext = appDelegate.managedDocument.managedObjectContext;
             }
+            [self.refreshControl endRefreshing];
         }];
     } else {
         self.managedObjectContext = appDelegate.managedDocument.managedObjectContext;
+        [self.refreshControl endRefreshing];
     }
 }
 

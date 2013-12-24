@@ -102,7 +102,7 @@
                 [segue.destinationViewController setTitle:photo.title];
                 
                 // records the date when this photo is viewed by user
-                photo.lastViewed = [NSDate date];
+//                photo.lastViewed = [NSDate date];
             }
         }
     }
