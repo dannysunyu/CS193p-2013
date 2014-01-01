@@ -13,6 +13,7 @@
 		3019A07218701B8C00729CE9 /* Photographer+MKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3019A07118701B8C00729CE9 /* Photographer+MKAnnotation.m */; };
 		3019A07418701C6600729CE9 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3019A07318701C6600729CE9 /* iPad.storyboard */; };
 		3019A07718701C8700729CE9 /* Photo+MKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3019A07618701C8700729CE9 /* Photo+MKAnnotation.m */; };
+		301D4EC818745A06001EA8D0 /* PhotosByPhotographerMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 301D4EC718745A06001EA8D0 /* PhotosByPhotographerMapViewController.m */; };
 		30E994CD187059C600C80B21 /* iPhone2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30E994CC187059C600C80B21 /* iPhone2.storyboard */; };
 		30E994D018705A7500C80B21 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E994CF18705A7500C80B21 /* MapViewController.m */; };
 		30E994D318705B5C00C80B21 /* PhotographerMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E994D218705B5C00C80B21 /* PhotographerMapViewController.m */; };
@@ -51,6 +52,8 @@
 		3019A07318701C6600729CE9 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		3019A07518701C8700729CE9 /* Photo+MKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Photo+MKAnnotation.h"; sourceTree = "<group>"; };
 		3019A07618701C8700729CE9 /* Photo+MKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photo+MKAnnotation.m"; sourceTree = "<group>"; };
+		301D4EC618745A06001EA8D0 /* PhotosByPhotographerMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosByPhotographerMapViewController.h; sourceTree = "<group>"; };
+		301D4EC718745A06001EA8D0 /* PhotosByPhotographerMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosByPhotographerMapViewController.m; sourceTree = "<group>"; };
 		30E994CC187059C600C80B21 /* iPhone2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone2.storyboard; sourceTree = "<group>"; };
 		30E994CE18705A7500C80B21 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		30E994CF18705A7500C80B21 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				30E994D218705B5C00C80B21 /* PhotographerMapViewController.m */,
 				30E994D418705BE900C80B21 /* DemoPhotographerMapViewController.h */,
 				30E994D518705BE900C80B21 /* DemoPhotographerMapViewController.m */,
+				301D4EC618745A06001EA8D0 /* PhotosByPhotographerMapViewController.h */,
+				301D4EC718745A06001EA8D0 /* PhotosByPhotographerMapViewController.m */,
 				ECBAD69716D70D6A00CABE2F /* Core Data */,
 				ECBAD69616D70D5D00CABE2F /* ImageViewController */,
 				ECBAD69116D70CE400CABE2F /* FlickrFetcher */,
@@ -310,6 +315,7 @@
 				ECBAD68816D6F8A200CABE2F /* PhotographerCDTVC.m in Sources */,
 				ECBAD68B16D6FAFE00CABE2F /* DemoPhotographerCDTVC.m in Sources */,
 				ECBAD69016D6FF5E00CABE2F /* PhotosByPhotographerCDTVC.m in Sources */,
+				301D4EC818745A06001EA8D0 /* PhotosByPhotographerMapViewController.m in Sources */,
 				30E994D018705A7500C80B21 /* MapViewController.m in Sources */,
 				ECBAD69516D70CE400CABE2F /* FlickrFetcher.m in Sources */,
 			);
@@ -401,7 +407,7 @@
 				INFOPLIST_FILE = "Photomania/Photomania-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -414,7 +420,7 @@
 				INFOPLIST_FILE = "Photomania/Photomania-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
