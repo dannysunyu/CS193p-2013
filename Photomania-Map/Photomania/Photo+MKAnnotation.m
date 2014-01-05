@@ -29,4 +29,14 @@
     return [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.thumbnailURLString]]];
 }
 
+- (NSString *)title
+{
+    return self.photoTitle;
+}
+
+- (NSString *)subtitle
+{
+    return self.photoSubtitle;
+}
+
 @end

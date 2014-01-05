@@ -9,7 +9,7 @@
 #import "MapViewController.h"
 #import "Photographer.h"
 
-@interface PhotosByPhotograherMapViewController : MapViewController
+@interface PhotosByPhotographerMapViewController : MapViewController
 
 // displays all Photos by the given photographer on the mapView
 

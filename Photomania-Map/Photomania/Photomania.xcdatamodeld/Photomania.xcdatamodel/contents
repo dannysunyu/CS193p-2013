@@ -4,9 +4,9 @@
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photoSubtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photoTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnailURLString" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unique" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="whoTook" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Photographer" inverseName="photos" inverseEntity="Photographer" syncable="YES"/>
     </entity>
@@ -15,7 +15,7 @@
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="whoTook" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Photo" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Photographer" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Photo" positionX="0" positionY="0" width="128" height="163"/>
+        <element name="Photographer" positionX="-279" positionY="0" width="128" height="75"/>
     </elements>
 </model>

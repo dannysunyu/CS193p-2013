@@ -53,8 +53,8 @@
     
     Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.textLabel.text = photo.title;
-    cell.detailTextLabel.text = photo.subtitle;
+    cell.textLabel.text = photo.photoTitle;
+    cell.detailTextLabel.text = photo.photoSubtitle;
     
     return cell;
     
@@ -77,7 +77,7 @@
             
             if ([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]) {
                 [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
-                [segue.destinationViewController performSelector:@selector(setTitle:) withObject:photo.title];
+                [segue.destinationViewController performSelector:@selector(setTitle:) withObject:photo.photoTitle];
             }
         }
     }

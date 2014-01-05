@@ -20,7 +20,7 @@
     // The "unique" attribute in Photo is Flickr's "id" which is guaranteed by Flickr to be unique.
 
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"photoTitle" ascending:YES]];
     request.predicate = [NSPredicate predicateWithFormat:@"unique = %@", [photoDictionary[FLICKR_PHOTO_ID] description]];
     
     // Execute the fetch
@@ -35,8 +35,8 @@
     } else if (![matches count]) { // none found, so let's create a Photo for that Flickr photo
         photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
         photo.unique = [photoDictionary[FLICKR_PHOTO_ID] description];
-        photo.title = [photoDictionary[FLICKR_PHOTO_TITLE] description];
-        photo.subtitle = [[photoDictionary valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
+        photo.photoTitle = [photoDictionary[FLICKR_PHOTO_TITLE] description];
+        photo.photoSubtitle = [[photoDictionary valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
         photo.imageURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatLarge] absoluteString];
         photo.latitude = @([photoDictionary[FLICKR_LATITUDE] doubleValue]);
         photo.longitude = @([photoDictionary[FLICKR_LONGITUDE] doubleValue]);

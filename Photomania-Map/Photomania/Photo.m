@@ -2,8 +2,8 @@
 //  Photo.m
 //  Photomania
 //
-//  Created by 孙 昱 on 13-12-29.
-//  Copyright (c) 2013年 Stanford University. All rights reserved.
+//  Created by 孙 昱 on 14-1-2.
+//  Copyright (c) 2014年 Stanford University. All rights reserved.
 //
 
 #import "Photo.h"
@@ -12,13 +12,13 @@
 
 @implementation Photo
 
+@dynamic photoTitle;
+@dynamic photoSubtitle;
 @dynamic imageURL;
 @dynamic latitude;
-@dynamic subtitle;
-@dynamic title;
-@dynamic unique;
 @dynamic longitude;
 @dynamic thumbnailURLString;
+@dynamic unique;
 @dynamic whoTook;
 
 @end
