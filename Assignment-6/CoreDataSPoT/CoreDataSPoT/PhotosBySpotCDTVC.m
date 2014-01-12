@@ -46,8 +46,38 @@
     
     Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.textLabel.text = photo.title;
-    cell.detailTextLabel.text = photo.subtitle;
+    UIImageView *thumbnailImage = (UIImageView *)[cell viewWithTag:0];
+    if (photo.thumbnailData) {
+        thumbnailImage.image = [[UIImage alloc] initWithData:photo.thumbnailData];
+    } else {
+        // clear previous image
+        thumbnailImage.image = nil;
+        
+        dispatch_queue_t imageFetchQ = dispatch_queue_create("image fetcher", NULL);
+        dispatch_async(imageFetchQ, ^{
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;    // bad
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:photo.thumbnailURL]];
+            if (imageData) {
+                photo.thumbnailData = imageData;
+            }
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            
+            UIImage *image = [[UIImage alloc] initWithData:imageData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (image) {
+                    thumbnailImage.image = image;
+                }
+            });
+        });
+    }
+    
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:1];
+    titleLabel.text = photo.title;
+    
+    UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:2];
+    subtitleLabel.text = photo.subtitle;
+    
+
     
     return cell;
 }
